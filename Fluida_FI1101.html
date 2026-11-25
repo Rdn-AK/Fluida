@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-j7LWYpXYYp20o9l5SuU1qwgCbEa9PB1tY2gT/9sqJh0='; style-src 'sha256-k3aWE7C0sx1SeMFh4YILuBIcSwZHBVf/LgWftWG4IVs='; img-src data:; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noarchive">
+<meta name="theme-color" content="#0B1220">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="Rangkuman materi, contoh soal (Tugas Kelompok 5), dan latihan soal Fluida Statis & Dinamis – FI-1101 Fisika Dasar I.">
+<title>FI-1101 Fisika Dasar I · Fluida — Materi, Contoh Soal &amp; Latihan</title>
+<style>
+:root{
+  --bg:#0B1220;--bg2:#0E1729;--surface:#111C31;--surface2:#16233D;--border:#22314F;
+  --fg:#E6EBF5;--muted:#93A1BC;--accent:#38BDF8;--accent2:#818CF8;--accent-soft:rgba(56,189,248,.12);
+  --ok:#34D399;--ok-soft:rgba(52,211,153,.12);--warn:#FBBF24;--warn-soft:rgba(251,191,36,.10);
+  --bad:#F87171;--violet:#A78BFA;--violet-soft:rgba(167,139,250,.11);
+  --water:rgba(56,189,248,.28);--hg:rgba(180,190,210,.55);--solid:#2A3A5C;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --math:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",Georgia,serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --radius:14px;--top:60px;--side:290px;--gap:10px;
+  --ease:cubic-bezier(.22,1,.36,1);--ease-io:cubic-bezier(.65,0,.35,1);--dur:.45s;
+}
+[data-theme="light"]{
+  --bg:#F5F7FB;--bg2:#EEF2F8;--surface:#FFFFFF;--surface2:#F3F6FB;--border:#DCE3EE;
+  --fg:#0F172A;--muted:#55647E;--accent:#0284C7;--accent2:#4F46E5;--accent-soft:rgba(2,132,199,.09);
+  --ok:#059669;--ok-soft:rgba(5,150,105,.09);--warn:#B45309;--warn-soft:rgba(217,119,6,.09);
+  --bad:#DC2626;--violet:#7C3AED;--violet-soft:rgba(124,58,237,.07);
+  --water:rgba(14,165,233,.22);--hg:rgba(100,116,139,.45);--solid:#CBD5E1;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--top) + var(--gap) + 18px);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color .25s var(--ease)}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+noscript p{padding:2rem;text-align:center}
+
+/* ---------- Topbar ---------- */
+.topbar{position:sticky;top:0;z-index:50;height:var(--top);display:flex;align-items:center;gap:12px;padding:0 16px;
+  background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+  border:1px solid transparent;border-bottom-color:var(--border);margin:0;
+  transition:top var(--dur) var(--ease),margin var(--dur) var(--ease),border-radius var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background-color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.floating .topbar{top:var(--gap);margin:0 max(12px,calc((100% - 1376px) / 2));border-radius:18px;border-color:var(--border);
+  background:color-mix(in srgb,var(--surface) 74%,transparent);
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.55),0 4px 12px -4px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.05)}
+[data-theme="light"] .floating .topbar{box-shadow:0 18px 40px -20px rgba(15,23,42,.28),0 4px 12px -6px rgba(15,23,42,.12)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--fg);white-space:nowrap}
+.brand .logo{transition:transform .5s var(--ease)}
+.brand:hover .logo{transform:rotate(-8deg) scale(1.06)}
+.brand:hover{text-decoration:none}
+.logo{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:var(--math);font-size:20px;font-style:italic}
+.brand small{display:block;font-weight:500;font-size:12px;color:var(--muted);line-height:1.1}
+.brand b{display:block;line-height:1.2;font-size:15px}
+.tabs{display:flex;gap:4px;margin-left:12px}
+.tabs a{padding:7px 12px;border-radius:9px;color:var(--muted);font-weight:600;font-size:14px;transition:background-color .3s var(--ease),color .3s var(--ease)}
+.tabs a:hover{background:var(--surface2);color:var(--fg);text-decoration:none}
+.tabs a.active{background:var(--accent-soft);color:var(--accent)}
+.spacer{flex:1}
+.search{position:relative;width:min(340px,40vw)}
+.search input{width:100%;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--fg);padding:0 34px 0 36px;font:inherit;font-size:14px;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.search input::placeholder{color:var(--muted)}
+.search svg{position:absolute;left:11px;top:11px;width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2}
+.search kbd{position:absolute;right:9px;top:9px}
+.search input:not(:placeholder-shown)~kbd,.search input:focus~kbd{display:none}
+kbd{font:12px var(--mono);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:0 5px;color:var(--muted);background:var(--surface2)}
+.results{position:absolute;top:46px;right:0;width:min(460px,92vw);max-height:65vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 24px 60px -12px rgba(0,0,0,.45);padding:6px;
+  visibility:hidden;opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;
+  transition:opacity .22s var(--ease),transform .35s var(--ease),visibility 0s linear .35s}
+.results.show{visibility:visible;opacity:1;transform:none;transition-delay:0s}
+.results a{display:block;padding:9px 11px;border-radius:9px;color:var(--fg);transition:background-color .2s var(--ease)}
+.results a:hover,.results a.sel{background:var(--surface2);text-decoration:none}
+.results .rt{font-weight:600;font-size:14px}
+.results .rv{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-right:6px}
+.results .rs{font-size:13px;color:var(--muted);margin-top:2px}
+.results .empty{padding:14px;color:var(--muted);font-size:14px}
+mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px;padding:0 1px}
+.iconbtn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer;flex:none;transition:background-color .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease),opacity .35s var(--ease)}
+.iconbtn:active{transform:scale(.92)}
+#themeBtn svg{transition:transform .6s var(--ease)}
+#themeBtn:hover svg{transform:rotate(25deg)}
+.iconbtn:hover{background:var(--surface2)}
+.iconbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#menuBtn{display:none}
+[data-theme="dark"] .i-sun{display:none}[data-theme="light"] .i-moon{display:none}
+
+/* ---------- Layout ---------- */
+.layout{display:grid;grid-template-columns:var(--side) minmax(0,1fr);max-width:1400px;margin:0 auto}
+.sidebar{position:sticky;top:calc(var(--top) + var(--gap));height:calc(100vh - var(--top) - var(--gap));overflow:auto;overscroll-behavior:contain;padding:20px 14px 40px;border-right:1px solid var(--border);scroll-behavior:smooth}
+.side-h{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 10px 8px}
+.toc a{display:block;padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14px;line-height:1.35;border-left:2px solid transparent;transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),padding .3s var(--ease)}
+.toc{animation:fadeUp .5s var(--ease) both}
+.toc a:hover{background:var(--surface2);color:var(--fg);text-decoration:none}
+.toc a.l3{padding-left:24px;font-size:13px}
+.toc a.on{color:var(--accent);background:var(--accent-soft);border-left-color:var(--accent);padding-left:14px}
+.toc a.l3.on{padding-left:28px}
+.toc a .chk{float:right;color:var(--ok);font-weight:700}
+.side-prog{margin:18px 6px 0;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.side-prog .lbl{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px}
+.bar{height:8px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--ok));transition:width .9s var(--ease)}
+.side-mobile-tabs{display:none}
+main{padding:28px clamp(16px,4vw,48px) 80px;min-width:0}
+.view{max-width:900px;margin:0 auto}
+.scrim{display:none}
+.view.enter{animation:viewIn .6s var(--ease) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+@keyframes shake{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.theme-anim,.theme-anim *,.theme-anim *::before,.theme-anim *::after{transition:background-color .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease),fill .5s var(--ease),stroke .5s var(--ease),box-shadow .5s var(--ease)!important}
+
+/* ---------- Typography ---------- */
+h1{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+h2{font-size:24px;line-height:1.25;margin:44px 0 14px;letter-spacing:-.01em;padding-top:4px}
+h3{font-size:18px;margin:30px 0 10px}
+h2 .num,h3 .num{color:var(--accent);margin-right:8px;font-variant-numeric:tabular-nums}
+p{margin:10px 0}
+ul,ol{padding-left:22px;margin:10px 0}
+li{margin:4px 0}
+.lead{color:var(--muted);font-size:17px;max-width:720px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:99px;margin-bottom:12px}
+.chap{border-top:1px solid var(--border);margin-top:40px}
+.chap:first-of-type{border-top:0;margin-top:0}
+.chap>h2{margin-top:32px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+sub,sup{font-size:.72em;line-height:0}
+
+/* ---------- Math ---------- */
+.m{font-family:var(--math);font-size:1.07em;white-space:nowrap}
+.eq{display:block;text-align:center;font-family:var(--math);font-size:1.16em;padding:10px 6px;margin:8px 0;overflow-x:auto;overflow-y:hidden;line-height:2.1}
+.eq .sep{display:inline-block;width:1.6em}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .12em;line-height:1.3}
+.fr>span{padding:0 .25em}
+.fr>span:first-child{border-bottom:1px solid currentColor}
+.lbl-eq{font-family:var(--sans);font-size:.75em;color:var(--muted)}
+
+/* ---------- Boxes ---------- */
+.box{border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--surface);border-radius:var(--radius);padding:14px 18px;margin:16px 0}
+.box>.bt{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.box.def{background:linear-gradient(180deg,var(--accent-soft),transparent 140%),var(--surface)}
+.box.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.box.warn>.bt{color:var(--warn)}
+.box.apply{border-left-color:var(--violet);background:var(--violet-soft)}
+.box.apply>.bt{color:var(--violet)}
+.box.ans{border-left-color:var(--ok);background:var(--ok-soft)}
+.box.ans>.bt{color:var(--ok)}
+.box.law{border-left-color:var(--accent2)}
+.box.law>.bt{color:var(--accent2)}
+.box p:first-of-type{margin-top:4px}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:2px}
+.box .go{font-size:13px;font-weight:600;margin-left:auto;text-transform:none;letter-spacing:0}
+
+/* ---------- Tables ---------- */
+.tbl{overflow-x:auto;margin:14px 0;border:1px solid var(--border);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--surface2);font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.c{text-align:center}
+
+/* ---------- Cards (home) ---------- */
+.hero{padding:26px 0 6px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}
+.card{display:block;border:1px solid var(--border);background:var(--surface);border-radius:var(--radius);padding:18px;color:var(--fg);transition:transform .5s var(--ease),border-color .35s var(--ease),box-shadow .5s var(--ease),opacity .7s var(--ease)}
+.card .ic{transition:transform .5s var(--ease)}
+a.card:hover .ic{transform:scale(1.1) rotate(-6deg)}
+.grid3 .card:nth-child(2){transition-delay:.06s}.grid3 .card:nth-child(3){transition-delay:.12s}
+.grid3 .card.in:hover{transition-delay:0s}
+a.card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 34px -18px rgba(0,0,0,.5);text-decoration:none}
+.card .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);margin-bottom:10px}
+.card .ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{margin:0 0 4px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.card .meta{margin-top:10px;font-size:13px;color:var(--accent);font-weight:600}
+.consts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{font-family:var(--math);border:1px solid var(--border);background:var(--surface2);border-radius:99px;padding:4px 12px;font-size:15px;white-space:nowrap}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;border:1px solid var(--border);border-radius:12px;background:var(--surface);margin:8px 0}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center;font-size:14px}
+
+/* ---------- Problems ---------- */
+.prob{border:1px solid var(--border);background:var(--surface);border-radius:18px;padding:6px 22px 18px;margin:26px 0}
+.prob>h2{margin:16px 0 8px;font-size:21px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:600;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:2px 10px;font-family:var(--sans)}
+.q{background:var(--surface2);border-radius:12px;padding:12px 16px;margin:10px 0}
+.q ol{list-style:lower-alpha}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:4px 14px;margin:12px 0}
+.kv>dt{font-weight:700;color:var(--muted);font-size:14px;padding-top:2px}
+.kv>dd{margin:0}
+details.sol{border:1px solid var(--border);border-radius:12px;margin:14px 0 4px;background:var(--bg2)}
+details.sol{transition:border-color .35s var(--ease),background-color .35s var(--ease)}
+details.sol[open]{border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+details.sol>summary{cursor:pointer;list-style:none;padding:11px 16px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:8px;user-select:none;border-radius:12px;transition:background-color .25s var(--ease)}
+details.sol>summary:hover{background:var(--accent-soft)}
+details.sol>summary::-webkit-details-marker{display:none}
+details.sol>summary::before{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .45s var(--ease);margin-right:4px}
+details.sol[open]>summary::before{transform:rotate(45deg)}
+details.sol>.inner{padding:2px 18px 14px;border-top:1px solid var(--border);overflow:hidden}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--border);background:var(--surface);color:var(--fg);border-radius:10px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background-color .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .25s var(--ease),box-shadow .3s var(--ease)}
+.btn:active{transform:scale(.96)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{color:#fff;box-shadow:0 8px 20px -8px var(--accent);transform:translateY(-1px)}
+.btn.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.check{border:1px dashed var(--border);border-radius:12px;padding:12px 14px;margin:14px 0}
+.check .ch{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:7px 0}
+.row label{min-width:30px;font-weight:700}
+.row input{width:150px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surface2);color:var(--fg);padding:0 10px;font:15px var(--mono);transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.row input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.row input.badv{animation:shake .4s var(--ease-io)}
+.fb.good,.fb.badv{animation:pop .45s var(--ease) both}
+.row input.good{border-color:var(--ok)}
+.row input.badv{border-color:var(--bad)}
+.row .u{font-family:var(--math);color:var(--muted);min-width:56px}
+.fb{font-size:14px;font-weight:600}
+.fb.good{color:var(--ok)}
+.fb.badv{color:var(--bad)}
+.hint{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* ---------- SVG diagrams ---------- */
+figure{margin:16px 0;text-align:center}
+figure svg{max-width:100%;height:auto;display:block;margin:0 auto}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.fig-r{float:right;width:240px;margin:4px 0 10px 18px}
+.s-ln{stroke:var(--fg);stroke-width:2;fill:none;stroke-linejoin:round}
+.s-thin{stroke:var(--fg);stroke-width:1.3;fill:none}
+.s-w{fill:var(--water)}
+.s-hg{fill:var(--hg)}
+.s-solid{fill:var(--solid);stroke:var(--fg);stroke-width:1.5}
+.s-ar{stroke:var(--accent);stroke-width:2.4;fill:none;marker-end:url(#ah)}
+.s-ar2{stroke:var(--warn);stroke-width:2.4;fill:none;marker-end:url(#ah2)}
+.s-head{fill:var(--accent)}
+.s-head2{fill:var(--warn)}
+.s-dash{stroke:var(--muted);stroke-dasharray:4 4;stroke-width:1.3;fill:none}
+.s-t{fill:var(--fg);font:14px var(--sans)}
+.s-tm{fill:var(--muted);font:12px var(--sans)}
+.s-ta{fill:var(--accent);font:600 13px var(--sans)}
+.s-dot{fill:var(--accent)}
+.s-sp{stroke:var(--violet);stroke-width:2;fill:none;stroke-linejoin:round}
+
+/* ---------- Misc ---------- */
+.totop{position:fixed;right:18px;bottom:18px;z-index:40;opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);box-shadow:0 10px 24px -10px rgba(0,0,0,.5);transition:opacity .35s var(--ease),transform .45s var(--ease),visibility 0s linear .45s}
+.totop.show{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+.pill-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px}
+.pill-nav a{flex:1;border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:var(--surface);color:var(--fg);transition:border-color .3s var(--ease),transform .45s var(--ease)}
+.pill-nav a:hover{transform:translateY(-2px)}
+.pill-nav a:hover{border-color:var(--accent);text-decoration:none}
+.pill-nav small{display:block;color:var(--muted);font-size:12px}
+.pill-nav .nx{text-align:right}
+
+@media (max-width:1020px){
+  .tabs{display:none}
+  #menuBtn{display:grid}
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;height:auto;width:min(86vw,320px);background:var(--bg);z-index:45;padding-top:calc(var(--top) + var(--gap) + 22px);transform:translateX(-104%);transition:transform .55s var(--ease),box-shadow .55s var(--ease);box-shadow:none;border-right:1px solid var(--border)}
+  body.nav-open .sidebar{transform:none;box-shadow:20px 0 60px rgba(0,0,0,.35)}
+  .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:44;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+  body.nav-open .scrim{opacity:1;pointer-events:auto}
+  body.nav-open{overflow:hidden}
+  #menuBtn svg path{transition:transform .5s var(--ease),opacity .3s var(--ease);transform-box:view-box;transform-origin:12px 12px}
+  body.nav-open #menuBtn .hb1{transform:translateY(6px) rotate(45deg)}
+  body.nav-open #menuBtn .hb2{opacity:0;transform:scaleX(.2)}
+  body.nav-open #menuBtn .hb3{transform:translateY(-6px) rotate(-45deg)}
+  .side-mobile-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px}
+  .side-mobile-tabs a{text-align:center;padding:8px;border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:14px;font-weight:600}
+  .side-mobile-tabs a.active{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+  .grid3{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .brand small{display:none}
+  .search{width:auto;flex:1}
+  .search kbd{display:none}
+  .spacer{display:none}
+  .prob{padding:4px 14px 14px}
+  .fig-r{float:none;width:100%;margin:10px 0}
+  .kv{grid-template-columns:1fr}
+  .kv>dt{padding-top:8px}
+  .results{position:fixed;left:8px;right:8px;top:calc(var(--top) + var(--gap) + 6px);width:auto}
+  .floating .topbar{margin:0 8px;padding:0 10px}
+}
+@media print{
+  .topbar,.sidebar,.totop,.toolbar,.check,.pill-nav,.scrim{display:none!important}
+  .layout{display:block}
+  .view{display:block!important;max-width:none}
+  .view[hidden]{display:block!important}
+  .rv{opacity:1!important;transform:none!important}
+  details.sol>.inner{display:block}
+  body{background:#fff;color:#000}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke konten</a>
+<noscript><p>Aktifkan JavaScript agar navigasi, pencarian, dan pemeriksa jawaban dapat berjalan. Seluruh isi tetap dapat dibaca di bawah.</p></noscript>
+
+<!-- shared SVG markers -->
+<svg class="defs" aria-hidden="true" width="0" height="0" focusable="false">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="s-head" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="s-head2" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24"><path class="hb1" d="M4 6h16"/><path class="hb2" d="M4 12h16"/><path class="hb3" d="M4 18h16"/></svg>
+  </button>
+  <a class="brand" href="#beranda" aria-label="Beranda">
+    <span class="logo" aria-hidden="true">ρ</span>
+    <span><b>Fluida</b><small>FI-1101 Fisika Dasar I</small></span>
+  </a>
+  <nav class="tabs" aria-label="Bagian utama">
+    <a href="#beranda" data-view-link="beranda">Beranda</a>
+    <a href="#materi" data-view-link="materi">Materi</a>
+    <a href="#contoh" data-view-link="contoh">Contoh Soal</a>
+    <a href="#latihan" data-view-link="latihan">Latihan</a>
+    <a href="#rumus" data-view-link="rumus">Lembar Rumus</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="search" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Cari materi atau soal…" autocomplete="off" spellcheck="false" maxlength="80" aria-label="Cari" aria-controls="results">
+    <kbd>/</kbd>
+    <div class="results" id="results" role="listbox"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" type="button" aria-label="Ganti tema terang/gelap">
+    <svg class="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Daftar isi">
+    <div class="side-mobile-tabs">
+      <a href="#beranda" data-view-link="beranda">Beranda</a>
+      <a href="#materi" data-view-link="materi">Materi</a>
+      <a href="#contoh" data-view-link="contoh">Contoh Soal</a>
+      <a href="#latihan" data-view-link="latihan">Latihan</a>
+      <a href="#rumus" data-view-link="rumus">Lembar Rumus</a>
+    </div>
+    <div class="side-h" id="tocTitle">Daftar Isi</div>
+    <nav class="toc" id="toc"></nav>
+    <div class="side-prog">
+      <div class="lbl"><span>Progres latihan</span><span id="progTxt">0/10</span></div>
+      <div class="bar"><span id="progBar"></span></div>
+      <div class="lbl"><span>Contoh soal dipelajari</span><span id="progTxt2">0/10</span></div>
+      <div class="bar"><span id="progBar2"></span></div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="konten">
+
+<!-- ================================================================ BERANDA -->
+<section class="view" id="beranda" data-label="Beranda">
+  <div class="hero">
+    <span class="eyebrow">Modul ke-6 · Tugas Kelompok 5 · Semester 1 2026–2027</span>
+    <h1>Fluida Statis &amp; Fluida Dinamis</h1>
+    <p class="lead">Satu tempat untuk semua bahan topik Fluida FI-1101: rangkuman materi 10 bab, 10 contoh soal lengkap dengan pembahasan (Tugas Kelompok 5), dan 10 latihan mandiri dengan pemeriksa jawaban otomatis.</p>
+  </div>
+
+  <div class="grid3">
+    <a class="card" href="#materi">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
+      <h3>Rangkuman Materi</h3>
+      <p>Massa jenis, tekanan, hidrostatika, Pascal, Archimedes, kontinuitas, Bernoulli.</p>
+      <div class="meta">10 bab →</div>
+    </a>
+    <a class="card" href="#contoh">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></div>
+      <h3>Contoh Soal</h3>
+      <p>Jawaban Tugas Kelompok 5 dengan format Diketahui – Ditanya – Penyelesaian.</p>
+      <div class="meta">10 soal + pembahasan →</div>
+    </a>
+    <a class="card" href="#latihan">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+      <h3>Latihan Soal</h3>
+      <p>Kerjakan sendiri, cek jawaban angka langsung, lalu buka kunci &amp; pembahasan.</p>
+      <div class="meta">10 soal latihan →</div>
+    </a>
+  </div>
+
+  <h2 id="konstanta">Konstanta yang dipakai</h2>
+  <p class="muted">Berlaku untuk semua soal, kecuali disebutkan lain.</p>
+  <div class="consts">
+    <span class="chip">g = 9,8 m/s²</span>
+    <span class="chip">P₀ = 1 atm = 1,013 × 10⁵ Pa</span>
+    <span class="chip">ρ<sub>air</sub> = 1000 kg/m³</span>
+    <span class="chip">ρ<sub>raksa</sub> = 13.600 kg/m³</span>
+    <span class="chip">ρ<sub>udara</sub> = 1,29 kg/m³</span>
+  </div>
+
+  <h2 id="cara-belajar">Cara belajar yang disarankan</h2>
+  <ol class="steps">
+    <li><b>Baca materi per bab.</b> Tiap bab punya kotak <i>Penerapan</i> yang langsung terhubung ke contoh soalnya.</li>
+    <li><b>Pelajari contoh soal.</b> Coba pikirkan dulu, lalu buka pembahasan. Tandai “Sudah dipelajari” bila paham.</li>
+    <li><b>Kerjakan latihan.</b> Masukkan jawaban angka (boleh koma desimal, mis. <span class="m">5,73</span> atau <span class="m">1,21e5</span>). Toleransi ±2%.</li>
+    <li><b>Ulangi dengan Lembar Rumus</b> dan daftar kesalahan umum sebelum ujian.</li>
+  </ol>
+  <p class="small muted">Pintasan: tekan <kbd>/</kbd> untuk mencari, <kbd>Esc</kbd> untuk menutup. Progres disimpan di peramban Anda sendiri (tidak dikirim ke mana pun).</p>
+
+  <h2 id="peta-cepat">Peta soal → konsep</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>No.</th><th>Contoh soal (Tugas 5)</th><th>Konsep kunci</th><th>Materi</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td><a href="#c1">Tekanan darah kepala–kaki</a></td><td><span class="m">ΔP = ρgh</span>; Pa → mmHg</td><td><a href="#m2">Bab 2</a></td></tr>
+      <tr><td class="c">2</td><td><a href="#c2">Jarum suntik</a></td><td><span class="m">P = F/A</span>; gauge vs mutlak; Pascal</td><td><a href="#m1-3">1.3</a>, <a href="#m4">4</a></td></tr>
+      <tr><td class="c">3</td><td><a href="#c3">Piston, vakum, pegas</a></td><td><span class="m">F = P₀A</span>; <span class="m">W = ½k∆x²</span></td><td><a href="#m5">Bab 5</a></td></tr>
+      <tr><td class="c">4</td><td><a href="#c4">Bejana air–raksa</a></td><td>Kekekalan volume + hukum pokok hidrostatika</td><td><a href="#m3">Bab 3</a></td></tr>
+      <tr><td class="c">5</td><td><a href="#c5">Pompa hidrolik &amp; pegas</a></td><td><span class="m">F₁/A₁ = F₂/A₂</span>; Hooke</td><td><a href="#m4">Bab 4</a></td></tr>
+      <tr><td class="c">6</td><td><a href="#c6">Bola berongga terapung</a></td><td><span class="m">m = ρ<sub>f</sub>V<sub>celup</sub></span>; volume kulit bola</td><td><a href="#m6-3">6.3</a></td></tr>
+      <tr><td class="c">7</td><td><a href="#c7">Balon udara</a></td><td>Archimedes di gas + Hukum II Newton</td><td><a href="#m6-5">6.5</a></td></tr>
+      <tr><td class="c">8</td><td><a href="#c8">Balok digantung dalam cairan</a></td><td><span class="m">F<sub>A</sub> = ρgV</span>; <span class="m">T = mg − F<sub>A</sub></span></td><td><a href="#m6-1">6.1</a>, <a href="#m6-4">6.4</a></td></tr>
+      <tr><td class="c">9</td><td><a href="#c9">Sayap pesawat</a></td><td>Bernoulli horizontal; <span class="m">F = ΔP·A</span></td><td><a href="#m8-3">8.3</a></td></tr>
+      <tr><td class="c">10</td><td><a href="#c10">Pipa horizontal</a></td><td>Debit, kontinuitas, Bernoulli; ujung terbuka <span class="m">P = P₀</span></td><td><a href="#m7">7</a>, <a href="#m8">8</a></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================================================================ MATERI -->
+<section class="view" id="materi" data-label="Materi" hidden>
+  <span class="eyebrow">Rangkuman Materi</span>
+  <h1>Rangkuman Materi Fluida</h1>
+  <p class="lead">Bekal untuk mengerjakan Tugas Kelompok 5 – Modul ke-6 Tutorial Fisika Dasar I (FI-1101).</p>
+
+  <!-- BAB 1 -->
+  <section class="chap">
+  <h2 id="m1"><span class="num">1</span>Pendahuluan dan Besaran Dasar</h2>
+
+  <h3 id="m1-1"><span class="num">1.1</span>Apa itu fluida?</h3>
+  <p>Fluida adalah zat yang dapat mengalir dan bentuknya mengikuti wadah, yaitu <b>zat cair dan gas</b>. Fluida tidak mampu menahan gaya geser dalam keadaan diam, sehingga dalam fluida diam gaya oleh fluida pada suatu permukaan selalu <b>tegak lurus</b> permukaan tersebut. Materi fluida dibagi dua:</p>
+  <ul>
+    <li><b>Fluida statis</b> (fluida diam): tekanan hidrostatik, hukum Pascal, hukum Archimedes. Dipakai pada Soal 1–8.</li>
+    <li><b>Fluida dinamis</b> (fluida bergerak): debit, kontinuitas, Bernoulli. Dipakai pada Soal 9–10.</li>
+  </ul>
+
+  <h3 id="m1-2"><span class="num">1.2</span>Massa jenis (rapat jenis, kerapatan)</h3>
+  <div class="box def"><div class="bt">Massa jenis</div>
+    <div class="eq">ρ = <span class="fr"><span>m</span><span>V</span></span> <span class="lbl-eq">[kg/m³]</span><span class="sep"></span>⟹<span class="sep"></span>m = ρV,<span class="sep"></span>W = mg = ρVg</div>
+  </div>
+  <ul>
+    <li><span class="m">1 g/cm³ = 1000 kg/m³</span>.</li>
+    <li>Massa jenis relatif (<i>specific gravity</i>): <span class="m">ρ<sub>rel</sub> = ρ/ρ<sub>air</sub></span>, tanpa satuan. Contoh: raksa 13,6.</li>
+    <li>Untuk benda berongga ada dua massa jenis yang berbeda:
+      <div class="eq">ρ<sub>bahan</sub> = <span class="fr"><span>m</span><span>V<sub>bahan</sub></span></span><span class="sep"></span>dan<span class="sep"></span>ρ<sub>rata-rata</sub> = <span class="fr"><span>m</span><span>V<sub>luar</sub></span></span> <span class="lbl-eq">(termasuk rongga)</span></div>
+      Yang menentukan benda terapung atau tenggelam adalah <b>ρ<sub>rata-rata</sub></b>. (<a href="#c6">Soal 6</a>)</li>
+  </ul>
+  <div class="box"><div class="bt">Konstanta yang dipakai pada tugas ini</div>
+    <div class="consts"><span class="chip">g = 9,8 m/s²</span><span class="chip">P₀ = 1 atm = 1,013 × 10⁵ Pa</span><span class="chip">ρ<sub>air</sub> = 1000 kg/m³</span><span class="chip">ρ<sub>raksa</sub> = 13.600 kg/m³</span><span class="chip">ρ<sub>udara</sub> = 1,29 kg/m³</span></div>
+  </div>
+
+  <h3 id="m1-3"><span class="num">1.3</span>Tekanan</h3>
+  <div class="box def"><div class="bt">Definisi tekanan</div>
+    <div class="eq">P = <span class="fr"><span>F<sub>⊥</sub></span><span>A</span></span> <span class="lbl-eq">[N/m² = Pa]</span><span class="sep"></span>⟺<span class="sep"></span>F = PA</div>
+    <p class="small"><span class="m">F<sub>⊥</sub></span> = komponen gaya yang tegak lurus permukaan, <span class="m">A</span> = luas permukaan.</p>
+  </div>
+  <p>Tekanan adalah besaran <b>skalar</b>. Pada fluida diam, tekanan di suatu titik sama besar ke segala arah. Tekanan mutlak dan tekanan terukur (<i>gauge</i>):</p>
+  <div class="eq">P<sub>mutlak</sub> = P₀ + P<sub>gauge</sub></div>
+  <ul>
+    <li><span class="m">P<sub>gauge</sub></span> = tekanan di atas tekanan atmosfer (yang terbaca alat ukur, misalnya pengukur ban).</li>
+    <li>Jika soal hanya meminta “tekanan fluida akibat gaya F”, biasanya yang dimaksud adalah tekanan terukur <span class="m">F/A</span>. Jawaban yang aman: tuliskan keduanya dan beri label jelas (seperti pada <a href="#c2">Soal 2</a> dan <a href="#c10">Soal 10</a>).</li>
+  </ul>
+
+  <h3 id="m1-4"><span class="num">1.4</span>Satuan dan konversi penting</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Besaran</th><th>Konversi</th></tr></thead>
+    <tbody>
+      <tr><td>Tekanan</td><td><span class="m">1 atm = 1,013 × 10⁵ Pa = 76 cmHg = 760 mmHg</span><br><span class="m">1 mmHg = ρ<sub>raksa</sub>g(0,001 m) ≈ 133,3 Pa</span><br><span class="m">1 bar = 10⁵ Pa</span></td></tr>
+      <tr><td>Luas</td><td><span class="m">1 cm² = 10⁻⁴ m²</span> (contoh: 15 cm² = 1,5 × 10⁻³ m²)</td></tr>
+      <tr><td>Volume</td><td><span class="m">1 L = 1 dm³ = 10⁻³ m³</span>; <span class="m">1 cm³ = 10⁻⁶ m³</span></td></tr>
+      <tr><td>Panjang</td><td><span class="m">1 cm = 10⁻² m</span></td></tr>
+      <tr><td>Waktu</td><td><span class="m">1 menit = 60 s</span> (10 menit = 600 s)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box warn"><div class="bt">⚠ Hati-hati</div>
+    <p>Kesalahan paling sering: lupa mengubah cm² ke m². Karena luas berdimensi panjang kuadrat, faktornya <b>10⁻⁴</b>, bukan 10⁻².</p>
+  </div>
+
+  <h3 id="m1-5"><span class="num">1.5</span>Rumus geometri yang diperlukan</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Bangun</th><th>Rumus</th><th>Dipakai di</th></tr></thead>
+    <tbody>
+      <tr><td>Luas lingkaran (jari-jari r)</td><td class="m">A = πr²</td><td>Soal 2, 3</td></tr>
+      <tr><td>Luas lingkaran (diameter d)</td><td class="m">A = ¼πd²</td><td>Soal 10</td></tr>
+      <tr><td>Volume bola</td><td class="m">V = ⁴⁄₃πR³</td><td>Soal 6</td></tr>
+      <tr><td>Volume setengah bola</td><td class="m">V = ⅔πR³</td><td>Soal 6</td></tr>
+      <tr><td>Volume kulit bola (bola berongga)</td><td class="m">V = ⁴⁄₃π(R³ − r³)</td><td>Soal 6</td></tr>
+      <tr><td>Luas sisi dan volume kubus (sisi L)</td><td class="m">A = L², V = L³</td><td>Soal 8</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="m1-6"><span class="num">1.6</span>Prasyarat mekanika</h3>
+  <ul>
+    <li><b>Hukum I Newton</b> (kesetimbangan): <span class="m">ΣF = 0</span>. Dipakai saat piston, balok, atau benda terapung dalam keadaan diam (Soal 3, 5, 6, 8).</li>
+    <li><b>Hukum II Newton</b>: <span class="m">ΣF = ma</span>. Dipakai saat benda dipercepat (Soal 7, balon udara).</li>
+    <li><b>Hukum Hooke</b>: <span class="m">F<sub>pegas</sub> = k∆x</span>; energi potensial pegas: <span class="m">E<sub>p</sub> = ½k(∆x)²</span> (Soal 3, 5).</li>
+    <li><b>Diagram gaya bebas</b>: gambar semua gaya pada benda (berat, gaya apung, tegangan tali, gaya tekan fluida, gaya pegas) sebelum menulis persamaan.</li>
+  </ul>
+  </section>
+
+  <!-- BAB 2 -->
+  <section class="chap">
+  <h2 id="m2"><span class="num">2</span>Tekanan Hidrostatik</h2>
+  <h3 id="m2-1"><span class="num">2.1</span>Rumus tekanan hidrostatik</h3>
+  <p>Tekanan dalam zat cair diam timbul karena berat kolom zat cair di atas titik tersebut. Tinjau kolom zat cair setinggi <span class="m">h</span> dengan luas alas <span class="m">A</span>: beratnya <span class="m">W = ρAhg</span>, sehingga tekanan tambahan di alas <span class="m">= W/A = ρgh</span>.</p>
+  <figure>
+    <svg viewBox="0 0 330 205" width="330" role="img" aria-label="Tekanan pada kedalaman h: P sama dengan P0 ditambah rho g h">
+      <rect class="s-w" x="61" y="60" width="198" height="129"/>
+      <path class="s-ln" d="M60,40 V190 H260 V40"/>
+      <line class="s-thin" x1="60" y1="60" x2="260" y2="60"/>
+      <line class="s-ar" x1="160" y1="8" x2="160" y2="56"/>
+      <text class="s-t" x="172" y="28">P₀ (atmosfer)</text>
+      <line class="s-dash" x1="225" y1="60" x2="225" y2="140"/>
+      <line class="s-dash" x1="160" y1="140" x2="232" y2="140"/>
+      <text class="s-t" x="232" y="104">h</text>
+      <circle class="s-dot" cx="160" cy="140" r="5"/>
+      <text class="s-tm" x="80" y="135">titik di kedalaman h</text>
+      <text class="s-ta" x="105" y="172">P = P₀ + ρgh</text>
+    </svg>
+  </figure>
+  <div class="box def"><div class="bt">Tekanan hidrostatik</div>
+    <div class="eq">P<sub>h</sub> = ρgh<span class="sep"></span><span class="sep"></span>P<sub>mutlak</sub> = P₀ + ρgh</div>
+    <p>Beda tekanan antara dua titik berbeda kedalaman: <span class="m">∆P = P₂ − P₁ = ρg(h₂ − h₁) = ρg∆h</span></p>
+    <p class="small"><span class="m">h</span> = kedalaman diukur dari permukaan zat cair ke bawah.</p>
+  </div>
+  <p>Sifat penting:</p>
+  <ol>
+    <li>Tekanan hanya bergantung pada kedalaman vertikal, massa jenis, dan <span class="m">g</span>. Bentuk wadah dan luas alas tidak berpengaruh (<b>paradoks hidrostatik</b>).</li>
+    <li>Makin dalam, tekanan makin besar, linear terhadap <span class="m">h</span>.</li>
+    <li>Untuk mencari beda tekanan, <span class="m">P₀</span> saling meniadakan, jadi cukup <span class="m">ρg∆h</span>.</li>
+  </ol>
+  <div class="box apply"><div class="bt">Penerapan – Soal 1 (tekanan darah kepala vs kaki) <a class="go" href="#c1">Lihat soal →</a></div>
+    <p>Darah dalam tubuh berdiri tegak dianggap kolom fluida setinggi <span class="m">h = 1,60 m</span>: <span class="m">∆P = ρ<sub>darah</sub>gh = (1,06×10³)(9,8)(1,60) ≈ 1,66×10⁴ Pa</span>. Dalam mmHg: bagi dengan 133,3, hasilnya <b>≈ 125 mmHg</b>. Kaki berada lebih “dalam”, sehingga tekanannya lebih besar.</p>
+  </div>
+
+  <h3 id="m2-2"><span class="num">2.2</span>Hukum pokok hidrostatika</h3>
+  <div class="box law"><div class="bt">Hukum pokok hidrostatika</div>
+    <p>Semua titik yang terletak pada <b>satu bidang mendatar</b> di dalam <b>satu jenis zat cair yang sama</b>, <b>diam</b>, dan <b>saling terhubung</b> memiliki tekanan yang sama besar.</p>
+  </div>
+  <p>Syarat-syarat ini harus dipenuhi semuanya. Jika di antara dua titik terdapat zat cair jenis lain, tekanannya tidak otomatis sama. Karena itu, bidang acuan selalu dipilih pada <b>bidang batas dua zat cair</b>, yaitu di dalam zat cair yang lebih rapat (lihat <a href="#m3">Bab 3</a>).</p>
+  <p>Pada tabung U berisi dua zat cair tak bercampur yang terbuka ke udara:</p>
+  <div class="eq">P₀ + ρ₁gh₁ = P₀ + ρ₂gh₂<span class="sep"></span>⟹<span class="sep"></span>ρ₁h₁ = ρ₂h₂</div>
+  <p>dengan <span class="m">h₁</span> dan <span class="m">h₂</span> diukur dari bidang batas ke permukaan masing-masing zat cair.</p>
+  </section>
+
+  <!-- BAB 3 -->
+  <section class="chap">
+  <h2 id="m3"><span class="num">3</span>Bejana Berhubungan dengan Zat Cair Tak Bercampur</h2>
+  <h3 id="m3-1"><span class="num">3.1</span>Prinsip</h3>
+  <p>Jika dua bejana terbuka dihubungkan di bagian bawah:</p>
+  <ul>
+    <li><b>Satu jenis zat cair</b>: permukaan zat cair setimbang pada ketinggian yang sama.</li>
+    <li><b>Dua zat cair tak bercampur</b>: zat cair yang tekanan dasarnya lebih besar akan mengalir. Zat cair yang lebih rapat selalu berada di bawah. Saat setimbang, permukaan zat cair yang kurang rapat lebih tinggi.</li>
+  </ul>
+  <h3 id="m3-2"><span class="num">3.2</span>Dua prinsip yang harus digabung</h3>
+  <ol>
+    <li><b>Kekekalan volume</b> (zat cair tak termampatkan). Jika luas penampang kedua bejana sama (<span class="m">A</span>), volume yang berpindah sama dengan tinggi yang berpindah: raksa yang turun <span class="m">x</span> di kanan muncul sebagai lapisan setebal <span class="m">x</span> di kiri.</li>
+    <li><b>Hukum pokok hidrostatika</b> pada bidang batas.</li>
+  </ol>
+  <figure>
+    <svg viewBox="0 0 540 230" width="540" role="img" aria-label="Bejana air dan raksa sebelum dan sesudah keran dibuka">
+      <!-- sebelum -->
+      <text class="s-ta" x="85" y="16">Sebelum</text>
+      <rect class="s-w" x="31" y="80" width="68" height="100"/>
+      <rect class="s-hg" x="141" y="80" width="68" height="100"/>
+      <path class="s-ln" d="M30,30 V195 H210 V30 M100,30 V180 H140 V30"/>
+      <circle class="s-solid" cx="120" cy="188" r="5"/>
+      <text class="s-t" x="45" y="135">air</text>
+      <text class="s-t" x="150" y="135">raksa</text>
+      <line class="s-dash" x1="22" y1="80" x2="22" y2="180"/>
+      <text class="s-tm" x="2" y="134">1 m</text>
+      <!-- sesudah -->
+      <text class="s-ta" x="365" y="16">Setimbang</text>
+      <rect class="s-w" x="311" y="34" width="68" height="100"/>
+      <rect class="s-hg" x="311" y="134" width="68" height="46"/>
+      <rect class="s-hg" x="379" y="180" width="42" height="14"/>
+      <rect class="s-hg" x="421" y="126" width="68" height="69"/>
+      <path class="s-ln" d="M310,22 V195 H490 V22 M380,22 V180 H420 V22"/>
+      <text class="s-t" x="330" y="90">air 1 m</text>
+      <text class="s-t" x="333" y="163">x</text>
+      <line class="s-dash" x1="296" y1="134" x2="500" y2="134"/>
+      <text class="s-tm" x="222" y="138">bidang batas</text>
+      <text class="s-t" x="428" y="165">1 − 2x</text>
+      <text class="s-tm" x="300" y="215">raksa masuk ke kiri setebal x, kanan turun x</text>
+    </svg>
+    <figcaption>Raksa (lebih rapat) mengalir ke bejana kiri dan berada di bawah air.</figcaption>
+  </figure>
+  <h3 id="m3-3"><span class="num">3.3</span>Langkah sistematis</h3>
+  <ol>
+    <li>Tentukan zat cair mana yang mengalir: bandingkan tekanan di dasar (<span class="m">ρgh</span>). Zat yang lebih rapat (raksa) mengalir ke bejana lain dan menempati bagian bawah.</li>
+    <li>Misalkan perpindahan permukaan <span class="m">x</span>; gunakan kekekalan volume untuk menyatakan semua tinggi dalam <span class="m">x</span>.</li>
+    <li>Pilih bidang acuan di bidang batas (di dalam zat cair yang lebih rapat).</li>
+    <li>Samakan tekanan di bidang itu pada kedua sisi, lalu selesaikan <span class="m">x</span>.</li>
+    <li>Periksa: semua tinggi harus positif dan masuk akal secara fisis.</li>
+  </ol>
+  <div class="box apply"><div class="bt">Penerapan – Soal 4 <a class="go" href="#c4">Lihat soal →</a></div>
+    <p>Pada bidang batas (tinggi <span class="m">x</span> dari dasar), sisi kiri ditekan air setinggi 1 m, sisi kanan ditekan raksa setinggi <span class="m">(1 − x) − x = 1 − 2x</span>:</p>
+    <div class="eq">ρ<sub>air</sub>(1) = ρ<sub>raksa</sub>(1 − 2x) ⟹ 1 − 2x = <span class="fr"><span>1000</span><span>13600</span></span> = 0,0735 ⟹ x = 0,463 m</div>
+    <p>Tinggi permukaan kiri <span class="m">= 1 + x ≈ 1,46 m</span> (raksa 0,463 m ditambah air 1 m).</p>
+  </div>
+  </section>
+
+  <!-- BAB 4 -->
+  <section class="chap">
+  <h2 id="m4"><span class="num">4</span>Hukum Pascal dan Pompa Hidrolik</h2>
+  <h3 id="m4-1"><span class="num">4.1</span>Hukum Pascal</h3>
+  <div class="box law"><div class="bt">Hukum Pascal</div>
+    <p>Tekanan yang diberikan pada fluida dalam ruang tertutup akan diteruskan <b>sama besar ke segala arah</b> dan ke setiap bagian fluida serta dinding wadahnya.</p>
+  </div>
+  <p>Akibatnya, pada jarum suntik atau piston, tekanan yang dihasilkan gaya dorong <span class="m">F</span> pada piston seluas <span class="m">A</span> adalah <span class="m">P = F/A</span> di seluruh fluida (<a href="#c2">Soal 2</a>).</p>
+  <h3 id="m4-2"><span class="num">4.2</span>Pompa (dongkrak) hidrolik</h3>
+  <figure>
+    <svg viewBox="0 0 400 220" width="400" role="img" aria-label="Pompa hidrolik dengan piston kecil A1 dan piston besar A2">
+      <path class="s-w" d="M61,80 H99 V170 H221 V80 H339 V194 H61 Z"/>
+      <path class="s-ln" d="M60,40 V195 H340 V40 M100,40 V170 H220 V40"/>
+      <rect class="s-solid" x="61" y="72" width="38" height="9"/>
+      <rect class="s-solid" x="221" y="72" width="118" height="9"/>
+      <line class="s-ar" x1="80" y1="8" x2="80" y2="68"/>
+      <line class="s-ar" x1="280" y1="8" x2="280" y2="68"/>
+      <text class="s-t" x="90" y="28">F₁</text>
+      <text class="s-t" x="290" y="28">F₂</text>
+      <text class="s-t" x="70" y="110">A₁</text>
+      <text class="s-t" x="270" y="110">A₂</text>
+      <text class="s-tm" x="135" y="214">P sama di seluruh fluida</text>
+    </svg>
+  </figure>
+  <div class="box def"><div class="bt">Pompa hidrolik (kedua piston sama tinggi)</div>
+    <div class="eq">P₁ = P₂<span class="sep"></span>⟹<span class="sep"></span><span class="fr"><span>F₁</span><span>A₁</span></span> = <span class="fr"><span>F₂</span><span>A₂</span></span><span class="sep"></span>⟹<span class="sep"></span>F₁ = <span class="fr"><span>A₁</span><span>A₂</span></span>F₂</div>
+    <p>Untuk piston berpenampang lingkaran: <span class="m">F₁/F₂ = A₁/A₂ = (d₁/d₂)²</span>.</p>
+  </div>
+  <ul>
+    <li><b>Keuntungan mekanis</b> <span class="m">= F₂/F₁ = A₂/A₁</span>: gaya kecil pada piston kecil dapat mengangkat beban besar pada piston besar.</li>
+    <li><b>Energi tetap kekal</b>: volume yang dipindahkan sama, <span class="m">A₁d₁ = A₂d₂</span>, sehingga usaha <span class="m">F₁d₁ = F₂d₂</span>. Piston kecil harus bergerak lebih jauh.</li>
+    <li>Jika kedua piston tidak sama tinggi, tambahkan suku hidrostatik: <span class="m">F₁/A₁ = F₂/A₂ + ρgh</span> (piston 1 lebih rendah <span class="m">h</span>). Jika jenis fluida tidak diketahui, suku ini umumnya diabaikan.</li>
+  </ul>
+  <div class="box apply"><div class="bt">Penerapan – Soal 5 (pompa hidrolik dengan pegas) <a class="go" href="#c5">Lihat soal →</a></div>
+    <p>Batu <span class="m">m = 40 kg</span> di atas <span class="m">A₂ = 65 cm²</span> menghasilkan <span class="m">P = mg/A₂ ≈ 6,03 × 10⁴ Pa</span>. Gaya fluida pada piston kecil: <span class="m">F₁ = (A₁/A₂)mg = (15/65)(392) ≈ 90,5 N</span>. Pegas menahan gaya ini: <span class="m">k∆x = F₁ ⟹ ∆x = 90,5/1600 ≈ 5,65 cm</span>. Perbandingan luas boleh langsung memakai cm² karena satuannya saling meniadakan.</p>
+  </div>
+  </section>
+
+  <!-- BAB 5 -->
+  <section class="chap">
+  <h2 id="m5"><span class="num">5</span>Gaya oleh Tekanan Atmosfer pada Piston dan Pegas</h2>
+  <p>Udara juga fluida. Tekanan atmosfer <span class="m">P₀</span> menekan setiap permukaan dengan gaya <span class="m">F = P₀A</span>. Biasanya gaya ini tidak terasa karena ada udara dengan tekanan sama di sisi lain. Jika satu sisi divakumkan (<span class="m">P = 0</span>), gaya bersihnya menjadi <span class="m">P₀A</span>, dan nilainya bisa besar. Untuk piston berjari-jari 2,4 cm, gayanya sekitar <b>183 N</b>.</p>
+  <figure>
+    <svg viewBox="0 0 320 230" width="300" role="img" aria-label="Piston dengan vakum di bawah dan pegas">
+      <path class="s-ln" d="M100,30 V212 H200 V30"/>
+      <rect class="s-solid" x="101" y="92" width="98" height="12"/>
+      <polyline class="s-sp" points="150,104 135,113 165,122 135,131 165,140 135,149 165,158 135,167 165,176 135,185 165,194 150,203 150,212"/>
+      <line class="s-ar" x1="150" y1="4" x2="150" y2="88"/>
+      <text class="s-ta" x="160" y="30">P₀A</text>
+      <text class="s-tm" x="210" y="60">udara luar P₀</text>
+      <text class="s-tm" x="210" y="102">piston (luas A)</text>
+      <text class="s-tm" x="210" y="170">vakum (P = 0)</text>
+      <text class="s-tm" x="62" y="160">pegas k</text>
+    </svg>
+  </figure>
+  <div class="box def"><div class="bt">Kesetimbangan piston dan energi pegas</div>
+    <div class="eq">ΣF = 0 : (P<sub>atas</sub> − P<sub>bawah</sub>)A = k∆x<span class="sep"></span><span class="lbl-eq">P<sub>bawah</sub> = 0</span> ⟶<span class="sep"></span>∆x = <span class="fr"><span>P₀A</span><span>k</span></span></div>
+    <div class="eq">Usaha menekan pegas: W = ½k(∆x)² <span class="lbl-eq">(bukan F·∆x)</span></div>
+  </div>
+  <div class="box warn"><div class="bt">⚠ Hati-hati</div>
+    <p>Usaha pegas bukan <span class="m">F∆x</span> karena gaya pegas bertambah linear dari 0 hingga <span class="m">k∆x</span>. Usaha adalah luas di bawah grafik F–x (segitiga), yaitu <span class="m">½k(∆x)² = ½F<sub>maks</sub>∆x</span>.</p>
+  </div>
+  <div class="box apply"><div class="bt">Penerapan – Soal 3 <a class="go" href="#c3">Lihat soal →</a></div>
+    <p><span class="m">A = π(0,024)² = 1,81 × 10⁻³ m²</span>; <span class="m">F = P₀A ≈ 183,3 N</span>; <span class="m">∆x = 183,3/3600 ≈ 5,09 cm</span>; <span class="m">W = ½(3600)(0,0509)² ≈ 4,67 J</span>.</p>
+  </div>
+  </section>
+
+  <!-- BAB 6 -->
+  <section class="chap">
+  <h2 id="m6"><span class="num">6</span>Hukum Archimedes (Gaya Apung)</h2>
+  <h3 id="m6-1"><span class="num">6.1</span>Asal-usul gaya apung</h3>
+  <p>Gaya apung muncul karena tekanan fluida bertambah terhadap kedalaman. Tinjau balok bersisi <span class="m">L</span> yang tercelup seluruhnya, dengan sisi atas pada kedalaman <span class="m">h₁</span> dan sisi bawah pada kedalaman <span class="m">h₂ = h₁ + L</span>:</p>
+  <figure>
+    <svg viewBox="0 0 330 245" width="330" role="img" aria-label="Balok tercelup dengan gaya tekan atas dan bawah">
+      <rect class="s-w" x="41" y="60" width="238" height="169"/>
+      <path class="s-ln" d="M40,30 V230 H280 V30"/>
+      <line class="s-thin" x1="40" y1="60" x2="280" y2="60"/>
+      <line class="s-thin" x1="160" y1="0" x2="160" y2="100"/>
+      <text class="s-t" x="166" y="22">tali (T)</text>
+      <rect class="s-solid" x="120" y="100" width="80" height="80"/>
+      <line class="s-ar2" x1="135" y1="74" x2="135" y2="97"/>
+      <line class="s-ar2" x1="185" y1="74" x2="185" y2="97"/>
+      <text class="s-t" x="62" y="90">F<tspan dy="4" font-size="10">atas</tspan></text>
+      <line class="s-ar" x1="135" y1="210" x2="135" y2="184"/>
+      <line class="s-ar" x1="185" y1="210" x2="185" y2="184"/>
+      <text class="s-t" x="56" y="205">F<tspan dy="4" font-size="10">bawah</tspan></text>
+      <line class="s-dash" x1="230" y1="60" x2="230" y2="100"/>
+      <line class="s-dash" x1="255" y1="60" x2="255" y2="180"/>
+      <line class="s-dash" x1="200" y1="100" x2="236" y2="100"/>
+      <line class="s-dash" x1="200" y1="180" x2="262" y2="180"/>
+      <text class="s-t" x="236" y="85">h₁</text>
+      <text class="s-t" x="260" y="145">h₂</text>
+    </svg>
+  </figure>
+  <div class="eq">F<sub>atas</sub> = (P₀ + ρ<sub>f</sub>gh₁)A <span class="lbl-eq">(ke bawah)</span>,<span class="sep"></span>F<sub>bawah</sub> = (P₀ + ρ<sub>f</sub>gh₂)A <span class="lbl-eq">(ke atas)</span></div>
+  <div class="eq">F<sub>A</sub> = F<sub>bawah</sub> − F<sub>atas</sub> = ρ<sub>f</sub>g(h₂ − h₁)A = ρ<sub>f</sub>gL·L² = ρ<sub>f</sub>gV</div>
+  <p>Gaya-gaya pada sisi samping saling meniadakan. Hasilnya tidak bergantung pada kedalaman dan <span class="m">P₀</span> ikut hilang. Inilah hukum Archimedes (<a href="#c8">Soal 8a</a> membuktikan kedua cara memberi hasil sama).</p>
+  <div class="box law"><div class="bt">Hukum Archimedes</div>
+    <p>Benda yang tercelup sebagian atau seluruhnya dalam fluida mendapat gaya ke atas sebesar <b>berat fluida yang dipindahkannya</b>:</p>
+    <div class="eq">F<sub>A</sub> = ρ<sub>f</sub>gV<sub>celup</sub></div>
+    <p class="small"><span class="m">ρ<sub>f</sub></span> = massa jenis <b>fluida</b> (bukan benda), <span class="m">V<sub>celup</sub></span> = volume bagian benda yang tercelup.</p>
+  </div>
+
+  <h3 id="m6-2"><span class="num">6.2</span>Terapung, melayang, tenggelam</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Keadaan</th><th>Syarat</th><th>Hubungan gaya</th></tr></thead>
+    <tbody>
+      <tr><td>Terapung</td><td class="m">ρ<sub>benda</sub> &lt; ρ<sub>f</sub></td><td class="m">W = F<sub>A</sub>, V<sub>celup</sub> &lt; V</td></tr>
+      <tr><td>Melayang</td><td class="m">ρ<sub>benda</sub> = ρ<sub>f</sub></td><td class="m">W = F<sub>A</sub>, V<sub>celup</sub> = V</td></tr>
+      <tr><td>Tenggelam</td><td class="m">ρ<sub>benda</sub> &gt; ρ<sub>f</sub></td><td><span class="m">W &gt; F<sub>A</sub></span> (dasar menahan sisanya)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="m6-3"><span class="num">6.3</span>Benda terapung: fraksi tercelup</h3>
+  <div class="box def"><div class="bt">Benda terapung</div>
+    <div class="eq">mg = ρ<sub>f</sub>gV<sub>celup</sub> ⟹ m = ρ<sub>f</sub>V<sub>celup</sub><span class="sep"></span>dan<span class="sep"></span><span class="fr"><span>V<sub>celup</sub></span><span>V</span></span> = <span class="fr"><span>ρ<sub>rata-rata</sub></span><span>ρ<sub>f</sub></span></span></div>
+  </div>
+  <p>Jadi jika separuh benda tercelup, <span class="m">ρ<sub>rata-rata</sub> = ½ρ<sub>f</sub></span>.</p>
+  <div class="box apply"><div class="bt">Penerapan – Soal 6 (bola berongga) <a class="go" href="#c6">Lihat soal →</a></div>
+    <p>(a) <span class="m">V<sub>celup</sub> = ½ · ⁴⁄₃πR³ = ⅔π(0,09)³ ≈ 1,527 × 10⁻³ m³</span>, sehingga <span class="m">m = ρ<sub>c</sub>V<sub>celup</sub> = 800(1,527 × 10⁻³) ≈ 1,22 kg</span>.</p>
+    <p>(b) Volume bahan kulit <span class="m">= ⁴⁄₃π(R³ − r³) ≈ 9,09 × 10⁻⁴ m³</span>, sehingga <span class="m">ρ<sub>bahan</sub> = m/V<sub>bahan</sub> ≈ 1,34 × 10³ kg/m³</span>.</p>
+    <p>Bahannya lebih rapat dari cairan, tetapi bola tetap terapung karena rongganya membuat <span class="m">ρ<sub>rata-rata</sub> = 400 kg/m³ &lt; 800 kg/m³</span>.</p>
+  </div>
+
+  <h3 id="m6-4"><span class="num">6.4</span>Benda tercelup yang digantung tali (berat semu)</h3>
+  <p>Jika benda lebih rapat dari fluida ditahan tali dalam keadaan diam:</p>
+  <div class="box def"><div class="bt">Tegangan tali / berat semu</div>
+    <div class="eq">T + F<sub>A</sub> = mg<span class="sep"></span>⟹<span class="sep"></span>T = mg − ρ<sub>f</sub>gV<sub>celup</sub></div>
+    <p class="small"><span class="m">T</span> juga disebut <b>berat semu</b>: berat benda yang “terasa” di dalam fluida.</p>
+  </div>
+  <div class="box apply"><div class="bt">Penerapan – Soal 8 <a class="go" href="#c8">Lihat soal →</a></div>
+    <p><span class="m">V = L³ = 0,216 m³</span>, <span class="m">F<sub>A</sub> = (1030)(9,8)(0,216) ≈ 2180 N</span>; <span class="m">T = mg − F<sub>A</sub> = 4410 − 2180 ≈ 2230 N</span>. Tekanan atmosfer dan kedalaman balok tidak memengaruhi <span class="m">F<sub>A</sub></span>; data tersebut hanya diperlukan bila soal meminta gaya tekan pada sisi atas/bawah.</p>
+  </div>
+
+  <h3 id="m6-5"><span class="num">6.5</span>Gaya apung dalam gas: balon udara</h3>
+  <p>Udara juga memberi gaya apung. Balon udara panas berisi udara yang massa jenisnya lebih kecil daripada udara luar (<span class="m">ρ<sub>dalam</sub> &lt; ρ<sub>luar</sub></span>).</p>
+  <div class="box def"><div class="bt">Percepatan balon udara (massa balon &amp; keranjang diabaikan)</div>
+    <div class="eq"><span class="fr"><span>ρ<sub>luar</sub>Vg</span><span class="lbl-eq">F<sub>A</sub></span></span> − <span class="fr"><span>ρ<sub>dalam</sub>Vg</span><span class="lbl-eq">W</span></span> = <span class="fr"><span>ρ<sub>dalam</sub>V</span><span class="lbl-eq">m</span></span>a<span class="sep"></span>⟹<span class="sep"></span>a = <span class="m">(</span><span class="fr"><span>ρ<sub>luar</sub></span><span>ρ<sub>dalam</sub></span></span> − 1<span class="m">)</span>g</div>
+  </div>
+  <p>Volume <span class="m">V</span> saling meniadakan, sehingga cukup diketahui perbandingan massa jenis.</p>
+  <div class="box warn"><div class="bt">⚠ Hati-hati</div>
+    <p>Massa yang dipercepat adalah massa udara <b>di dalam</b> balon (<span class="m">ρ<sub>dalam</sub>V</span>), bukan massa udara yang dipindahkan. Jika massa balon dan beban <span class="m">M</span> tidak diabaikan: <span class="m">(ρ<sub>luar</sub> − ρ<sub>dalam</sub>)Vg − Mg = (ρ<sub>dalam</sub>V + M)a</span>.</p>
+  </div>
+  <div class="box apply"><div class="bt">Penerapan – Soal 7 <a class="go" href="#c7">Lihat soal →</a></div>
+    <p><span class="m">a = (1,39 − 1)(9,8) ≈ 3,82 m/s²</span> ke atas.</p>
+  </div>
+  </section>
+
+  <!-- BAB 7 -->
+  <section class="chap">
+  <h2 id="m7"><span class="num">7</span>Fluida Dinamis: Debit dan Persamaan Kontinuitas</h2>
+  <h3 id="m7-1"><span class="num">7.1</span>Fluida ideal</h3>
+  <p>Persamaan kontinuitas dan Bernoulli berlaku untuk <b>fluida ideal</b>, yaitu fluida yang:</p>
+  <ol>
+    <li><b>tak termampatkan</b> (<i>incompressible</i>): ρ konstan;</li>
+    <li><b>tak kental</b> (<i>non-viscous</i>): tidak ada gesekan internal, jadi tidak ada energi yang hilang;</li>
+    <li>alirannya <b>tunak</b> (<i>steady</i>): kecepatan di suatu titik tidak berubah terhadap waktu;</li>
+    <li><b>tak berputar</b> (<i>irrotational</i>) dan mengikuti garis alir (laminer).</li>
+  </ol>
+  <h3 id="m7-2"><span class="num">7.2</span>Debit</h3>
+  <div class="box def"><div class="bt">Debit (laju aliran volume)</div>
+    <div class="eq">Q = <span class="fr"><span>V</span><span>t</span></span> = Av <span class="lbl-eq">[m³/s]</span><span class="sep"></span>⟹<span class="sep"></span>V = Qt = Avt</div>
+  </div>
+  <p><span class="m">1 L/s = 10⁻³ m³/s</span>. Laju aliran massa: <span class="m">ṁ = ρAv</span>.</p>
+  <h3 id="m7-3"><span class="num">7.3</span>Persamaan kontinuitas</h3>
+  <p>Karena fluida tak termampatkan dan tidak ada yang bocor, volume yang masuk ke suatu penampang per detik sama dengan volume yang keluar dari penampang lain:</p>
+  <figure>
+    <svg viewBox="0 0 460 175" width="460" role="img" aria-label="Pipa melebar ke menyempit: di penampang kecil kecepatan besar">
+      <path class="s-w" d="M20,30 H220 L260,60 H440 V110 H260 L220,140 H20 Z"/>
+      <path class="s-ln" d="M20,30 H220 L260,60 H440 M20,140 H220 L260,110 H440"/>
+      <line class="s-ar" x1="60" y1="85" x2="130" y2="85"/>
+      <line class="s-ar" x1="290" y1="85" x2="425" y2="85"/>
+      <text class="s-t" x="88" y="74">v₂</text>
+      <text class="s-t" x="350" y="78">v₁</text>
+      <text class="s-tm" x="40" y="162">A₂ besar, v kecil</text>
+      <text class="s-tm" x="290" y="132">A₁ kecil, v besar</text>
+    </svg>
+  </figure>
+  <div class="box def"><div class="bt">Persamaan kontinuitas</div>
+    <div class="eq">A₁v₁ = A₂v₂ = Q = konstan<span class="sep"></span><span class="lbl-eq">pipa bulat</span> ⟶<span class="sep"></span><span class="fr"><span>v₂</span><span>v₁</span></span> = <span class="fr"><span>A₁</span><span>A₂</span></span> = <span class="m">(</span><span class="fr"><span>d₁</span><span>d₂</span></span><span class="m">)²</span> = <span class="m">(</span><span class="fr"><span>r₁</span><span>r₂</span></span><span class="m">)²</span></div>
+  </div>
+  <p>Penampang sempit membuat aliran cepat. Kecepatan berbanding terbalik dengan kuadrat diameter: diameter dua kali lebih kecil berarti kecepatan <b>empat kali</b> lebih besar.</p>
+  <div class="box warn"><div class="bt">⚠ Hati-hati</div>
+    <p>Perhatikan indeks pada soal. Pada <a href="#c10">Soal 10</a>, indeks 1 adalah ujung keluar (kanan, <span class="m">d = 3 cm</span>) dan indeks 2 adalah sisi kiri (<span class="m">d = 5 cm</span>). Jangan menukar diameternya.</p>
+  </div>
+  <div class="box apply"><div class="bt">Penerapan – Soal 10 (a) dan (b) <a class="go" href="#c10">Lihat soal →</a></div>
+    <p>(a) <span class="m">A₁ = ¼π(0,03)² = 7,07 × 10⁻⁴ m²</span>; <span class="m">Q = A₁v₁ = 1,06 × 10⁻² m³/s</span>; <span class="m">V = Qt = (1,06 × 10⁻²)(600) ≈ 6,36 m³</span>.</p>
+    <p>(b) <span class="m">v₂ = v₁(d₁/d₂)² = 15(3/5)² = 5,4 m/s</span>.</p>
+  </div>
+  </section>
+
+  <!-- BAB 8 -->
+  <section class="chap">
+  <h2 id="m8"><span class="num">8</span>Persamaan Bernoulli</h2>
+  <h3 id="m8-1"><span class="num">8.1</span>Bentuk umum</h3>
+  <p>Persamaan Bernoulli adalah <b>hukum kekekalan energi</b> untuk fluida ideal yang mengalir sepanjang satu garis alir. Tiap suku memiliki satuan tekanan (Pa), yaitu energi per satuan volume (J/m³):</p>
+  <div class="box def"><div class="bt">Persamaan Bernoulli</div>
+    <div class="eq">P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂</div>
+    <div class="tbl"><table><tbody>
+      <tr><td class="m">P</td><td>tekanan statis (energi tekanan per volume)</td></tr>
+      <tr><td class="m">½ρv²</td><td>tekanan dinamis (energi kinetik per volume)</td></tr>
+      <tr><td class="m">ρgh</td><td>energi potensial per volume (h = ketinggian titik dari acuan)</td></tr>
+    </tbody></table></div>
+  </div>
+  <p><b>Gagasan penurunan singkat.</b> Usaha oleh beda tekanan untuk mendorong volume <span class="m">∆V</span> fluida, <span class="m">(P₁ − P₂)∆V</span>, sama dengan perubahan energi kinetik ditambah energi potensialnya: <span class="m">½ρ∆V(v₂² − v₁²) + ρ∆Vg(h₂ − h₁)</span>. Jika kedua ruas dibagi <span class="m">∆V</span> dan disusun ulang, diperoleh persamaan Bernoulli.</p>
+
+  <h3 id="m8-2"><span class="num">8.2</span>Kasus-kasus khusus</h3>
+  <ol>
+    <li><b>Pipa horizontal</b> (<span class="m">h₁ = h₂</span>):
+      <div class="eq">P₁ + ½ρv₁² = P₂ + ½ρv₂²<span class="sep"></span>⟹<span class="sep"></span>P₂ − P₁ = ½ρ(v₁² − v₂²)</div>
+      Di tempat yang alirannya lebih cepat, tekanannya lebih kecil (<b>prinsip Bernoulli</b>).</li>
+    <li><b>Fluida diam</b> (<span class="m">v₁ = v₂ = 0</span>): <span class="m">P₂ − P₁ = ρg(h₁ − h₂)</span>, kembali ke rumus hidrostatik.</li>
+    <li><b>Ujung terbuka ke udara</b>: tekanan fluida tepat di ujung keluar <span class="m">= P₀</span>. Ini kunci <a href="#c10">Soal 10(c)</a>.</li>
+    <li><b>Teorema Torricelli</b> (kebocoran tangki terbuka, kedalaman lubang <span class="m">h</span> dari permukaan): <span class="m">v = √(2gh)</span>. (Pengayaan; tidak dipakai di tugas ini.)</li>
+  </ol>
+  <div class="box apply"><div class="bt">Penerapan – Soal 10 (c) <a class="go" href="#c10">Lihat soal →</a></div>
+    <p>Ujung keluar terbuka, jadi <span class="m">P₁ = P₀</span>. Pipa horizontal:</p>
+    <div class="eq">P₂ = P₁ + ½ρ(v₁² − v₂²) = 1,013 × 10⁵ + ½(1000)(225 − 29,16) ≈ 1,99 × 10⁵ Pa <span class="lbl-eq">(mutlak)</span></div>
+    <p>Tekanan terukurnya <span class="m">≈ 9,79 × 10⁴ Pa</span>. Di bagian lebar alirannya lambat, sehingga tekanannya lebih besar.</p>
+  </div>
+
+  <h3 id="m8-3"><span class="num">8.3</span>Gaya angkat sayap pesawat</h3>
+  <p>Bentuk sayap (<i>airfoil</i>) membuat udara di atas sayap mengalir lebih cepat daripada di bawahnya. Menurut Bernoulli, tekanan di atas sayap lebih kecil, sehingga timbul gaya total ke atas.</p>
+  <figure>
+    <svg viewBox="0 0 440 200" width="440" role="img" aria-label="Sayap pesawat: udara atas cepat tekanan kecil, udara bawah lambat tekanan besar">
+      <line class="s-ar" x1="30" y1="52" x2="175" y2="52"/>
+      <line class="s-ar" x1="245" y1="52" x2="410" y2="52"/>
+      <path class="s-solid" d="M60,115 C110,62 260,66 370,110 C260,122 120,130 60,115 Z"/>
+      <line class="s-ar2" x1="210" y1="104" x2="210" y2="14"/>
+      <text class="s-ta" x="220" y="24">F<tspan dy="4" font-size="10">angkat</tspan><tspan dy="-4"> = ∆P·A</tspan></text>
+      <line class="s-ar" x1="30" y1="158" x2="300" y2="158"/>
+      <text class="s-tm" x="250" y="78">v<tspan dy="3" font-size="9">atas</tspan><tspan dy="-3"> besar, P</tspan><tspan dy="3" font-size="9">atas</tspan><tspan dy="-3"> kecil</tspan></text>
+      <text class="s-tm" x="120" y="185">v<tspan dy="3" font-size="9">bawah</tspan><tspan dy="-3"> kecil, P</tspan><tspan dy="3" font-size="9">bawah</tspan><tspan dy="-3"> besar</tspan></text>
+    </svg>
+  </figure>
+  <div class="box def"><div class="bt">Gaya angkat pesawat (beda ketinggian sisi atas–bawah diabaikan)</div>
+    <div class="eq">∆P = P<sub>bawah</sub> − P<sub>atas</sub> = ½ρ<sub>udara</sub>(v<sub>atas</sub>² − v<sub>bawah</sub>²)<span class="sep"></span><span class="sep"></span>F = ∆P · A</div>
+  </div>
+  <p>Pada terbang mendatar dengan kecepatan tetap, gaya angkat ini mengimbangi berat pesawat (<span class="m">F = Mg</span>).</p>
+  <div class="box apply"><div class="bt">Penerapan – Soal 9 <a class="go" href="#c9">Lihat soal →</a></div>
+    <p><span class="m">∆P = ½(1,29)(62² − 54²) = ½(1,29)(928) ≈ 599 Pa</span>; <span class="m">F = ∆P · A = 598,6 × 16 ≈ 9,58 × 10³ N</span> ke atas.</p>
+    <p class="small">Tips: <span class="m">62² − 54² = (62 − 54)(62 + 54) = 8 × 116 = 928</span>.</p>
+  </div>
+  <div class="box warn"><div class="bt">⚠ Hati-hati</div>
+    <p><span class="m">v<sub>atas</sub>² − v<sub>bawah</sub>² ≠ (v<sub>atas</sub> − v<sub>bawah</sub>)²</span>. Kuadratkan masing-masing kecepatan dahulu, baru dikurangkan.</p>
+  </div>
+  </section>
+
+  <!-- BAB 9 -->
+  <section class="chap">
+  <h2 id="m9"><span class="num">9</span>Peta Soal–Konsep dan Strategi Pengerjaan</h2>
+  <h3 id="m9-1"><span class="num">9.1</span>Peta soal ke konsep</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>No.</th><th>Topik soal</th><th>Konsep / rumus kunci</th><th>Bab</th></tr></thead>
+    <tbody>
+      <tr><td class="c"><a href="#c1">1</a></td><td>Tekanan darah kepala–kaki</td><td><span class="m">∆P = ρgh</span>; konversi Pa → mmHg</td><td><a href="#m2">2</a></td></tr>
+      <tr><td class="c"><a href="#c2">2</a></td><td>Jarum suntik</td><td><span class="m">P = F/A</span>, <span class="m">A = πr²</span>; tekanan gauge vs mutlak; Pascal</td><td><a href="#m1-3">1.3</a>, <a href="#m4">4</a></td></tr>
+      <tr><td class="c"><a href="#c3">3</a></td><td>Piston, vakum, dan pegas</td><td><span class="m">F = P₀A</span>; <span class="m">k∆x = P₀A</span>; <span class="m">W = ½k∆x²</span></td><td><a href="#m5">5</a></td></tr>
+      <tr><td class="c"><a href="#c4">4</a></td><td>Bejana air–raksa</td><td>Kekekalan volume + hukum pokok hidrostatika di bidang batas</td><td><a href="#m2-2">2.2</a>, <a href="#m3">3</a></td></tr>
+      <tr><td class="c"><a href="#c5">5</a></td><td>Pompa hidrolik dan pegas</td><td>Pascal: <span class="m">F₁/A₁ = F₂/A₂</span>; Hooke</td><td><a href="#m4">4</a></td></tr>
+      <tr><td class="c"><a href="#c6">6</a></td><td>Bola berongga terapung</td><td>Archimedes, <span class="m">m = ρ<sub>f</sub>V<sub>celup</sub></span>; volume kulit bola</td><td><a href="#m6-3">6.3</a></td></tr>
+      <tr><td class="c"><a href="#c7">7</a></td><td>Balon udara</td><td>Archimedes di gas + Hukum II Newton</td><td><a href="#m6-5">6.5</a></td></tr>
+      <tr><td class="c"><a href="#c8">8</a></td><td>Balok digantung dalam cairan</td><td>Asal-usul gaya apung, <span class="m">F<sub>A</sub> = ρgV</span>; <span class="m">T = mg − F<sub>A</sub></span></td><td><a href="#m6-1">6.1</a>, <a href="#m6-4">6.4</a></td></tr>
+      <tr><td class="c"><a href="#c9">9</a></td><td>Sayap pesawat</td><td>Bernoulli horizontal; <span class="m">F = ∆P·A</span></td><td><a href="#m8-3">8.3</a></td></tr>
+      <tr><td class="c"><a href="#c10">10</a></td><td>Pipa horizontal</td><td>Debit, kontinuitas, Bernoulli; ujung terbuka <span class="m">P = P₀</span></td><td><a href="#m7">7</a>, <a href="#m8">8</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="m9-2"><span class="num">9.2</span>Strategi umum pemecahan soal fluida</h3>
+  <ol class="steps">
+    <li><b>Baca dan gambar.</b> Buat sketsa, tandai titik-titik penting, kedalaman, dan arah aliran.</li>
+    <li><b>Tulis Diketahui–Ditanya</b>, lalu ubah semua besaran ke SI (m, m², m³, kg, s, Pa).</li>
+    <li><b>Kenali jenis soal</b>: fluida diam (hidrostatik, Pascal, Archimedes) atau fluida bergerak (kontinuitas, Bernoulli).</li>
+    <li><b>Fluida statis</b>: pilih bidang acuan yang tepat atau buat diagram gaya bebas, lalu terapkan <span class="m">ΣF = 0</span> (atau <span class="m">ΣF = ma</span>).</li>
+    <li><b>Fluida dinamis</b>: kontinuitas untuk hubungan kecepatan, lalu Bernoulli untuk tekanan. Cari titik yang tekanannya diketahui (ujung terbuka = <span class="m">P₀</span>).</li>
+    <li><b>Selesaikan secara simbolik dahulu</b>, baru masukkan angka. Cara ini mengurangi galat pembulatan dan sering memperlihatkan besaran yang saling meniadakan (misalnya <span class="m">V</span> pada Soal 7, <span class="m">P₀</span> pada gaya apung).</li>
+    <li><b>Periksa jawaban</b>: satuan, orde besar, tanda/arah, dan kewajaran fisis.</li>
+  </ol>
+
+  <h3 id="m9-3"><span class="num">9.3</span>Kesalahan umum yang perlu dihindari</h3>
+  <div class="box warn"><div class="bt">⚠ Daftar kesalahan umum</div>
+  <ul>
+    <li>Konversi luas cm² → m² memakai 10⁻² (yang benar 10⁻⁴).</li>
+    <li>Memakai diameter sebagai jari-jari pada <span class="m">A = πr²</span>.</li>
+    <li>Memakai massa jenis benda (bukan massa jenis fluida) dalam <span class="m">F<sub>A</sub> = ρ<sub>f</sub>gV<sub>celup</sub></span>.</li>
+    <li>Memakai volume total padahal hanya sebagian yang tercelup.</li>
+    <li>Menyamakan tekanan pada dua titik setinggi yang dipisahkan zat cair berbeda jenis.</li>
+    <li>Menulis usaha pegas sebagai <span class="m">F∆x</span> (yang benar <span class="m">½k∆x²</span>).</li>
+    <li>Mencampur tekanan mutlak dan terukur dalam satu persamaan.</li>
+    <li>Menghitung <span class="m">(v<sub>a</sub> − v<sub>b</sub>)²</span> alih-alih <span class="m">v<sub>a</sub>² − v<sub>b</sub>²</span> pada Bernoulli.</li>
+    <li>Menukar indeks penampang dan kecepatan pada persamaan kontinuitas.</li>
+  </ul>
+  </div>
+  </section>
+
+  <section class="chap">
+  <h2 id="m10"><span class="num">10</span>Lembar Rumus Ringkas</h2>
+  <p>Versi lengkap dan siap cetak ada di halaman <a href="#rumus">Lembar Rumus</a>.</p>
+  <div class="box"><div class="bt">Asumsi standar pada soal-soal ini</div>
+    <p><span class="m">g = 9,8 m/s²</span>; <span class="m">P₀ = 1,013×10⁵ Pa</span>; massa piston, pegas, tali, bahan balon, dan pipa penghubung diabaikan kecuali disebutkan; zat cair tak termampatkan; aliran ideal (tak kental, tunak) pada soal fluida dinamis.</p>
+  </div>
+  </section>
+
+  <div class="pill-nav"><a href="#beranda"><small>← Kembali</small>Beranda</a><a class="nx" href="#contoh"><small>Lanjut →</small>Contoh Soal</a></div>
+</section>
+
+<!-- ================================================================ CONTOH SOAL -->
+<section class="view" id="contoh" data-label="Contoh Soal" hidden>
+  <span class="eyebrow">Contoh Soal · Tugas Kelompok 5</span>
+  <h1>Contoh Soal &amp; Pembahasan</h1>
+  <p class="lead">Jawaban Tugas Kelompok 5 – Modul ke-6 Tutorial FI-1101. Coba pikirkan dulu, lalu buka pembahasan.</p>
+  <div class="toolbar">
+    <button class="btn" type="button" data-toggle-all="contoh" data-open="1">Buka semua pembahasan</button>
+    <button class="btn" type="button" data-toggle-all="contoh" data-open="0">Tutup semua</button>
+  </div>
+
+  <!-- C1 -->
+  <article class="prob" data-prob="c1">
+    <h2 id="c1">Soal 1 <span class="tag">Tekanan hidrostatik</span></h2>
+    <div class="q"><p>Tentukanlah perbedaan tekanan hidrostatik antara kepala dan kaki manusia dengan tinggi badan 1,60 m. Diketahui rapat jenis darah adalah 1,06 × 10³ kg/m³.</p></div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">h = 1,60 m</span>, <span class="m">ρ<sub>darah</sub> = 1,06 × 10³ kg/m³</span>, <span class="m">g = 9,8 m/s²</span></dd><dt>Ditanya</dt><dd><span class="m">∆P</span> antara kepala dan kaki.</dd></dl>
+      <p><b>Penyelesaian:</b> Tekanan hidrostatik bertambah sebanding kedalaman, sehingga beda tekanan antara dua titik yang berbeda ketinggian <span class="m">h</span> adalah</p>
+      <div class="eq">∆P = ρgh = (1,06 × 10³)(9,8)(1,60) = 16.620,8 Pa</div>
+      <div class="eq">Dalam mmHg: ∆P = <span class="fr"><span>16620,8</span><span>133,3</span></span> ≈ 125 mmHg</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p><span class="m">∆P ≈ 1,66 × 10⁴ Pa</span> (≈ 125 mmHg); tekanan di kaki lebih besar daripada di kepala.</p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m2">Materi: Bab 2</a><button class="btn learn" type="button" data-learn="c1">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C2 -->
+  <article class="prob" data-prob="c2">
+    <h2 id="c2">Soal 2 <span class="tag">Tekanan &amp; Pascal</span></h2>
+    <div class="q"><p>Hitunglah tekanan fluida pada jarum suntik berbentuk silinder dengan jari-jari 1 cm ketika gaya sebesar 42 N diberikan pada bagian piston.</p></div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">r = 1 cm = 0,01 m</span>, <span class="m">F = 42 N</span></dd><dt>Ditanya</dt><dd>Tekanan fluida <span class="m">P</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> Luas penampang piston:</p>
+      <div class="eq">A = πr² = π(0,01)² = 3,14 × 10⁻⁴ m²</div>
+      <p>Tekanan yang diberikan piston pada fluida (tekanan terukur/gauge):</p>
+      <div class="eq">P = <span class="fr"><span>F</span><span>A</span></span> = <span class="fr"><span>42</span><span>3,14 × 10⁻⁴</span></span> = 1,34 × 10⁵ Pa</div>
+      <p>Jika dihitung sebagai tekanan mutlak: <span class="m">P<sub>abs</sub> = P₀ + P = 1,013 × 10⁵ + 1,337 × 10⁵ ≈ 2,35 × 10⁵ Pa</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p><span class="m">P ≈ 1,34 × 10⁵ Pa</span> (tekanan terukur), atau <span class="m">≈ 2,35 × 10⁵ Pa</span> (tekanan mutlak).</p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m1-3">Materi: 1.3 &amp; Bab 4</a><button class="btn learn" type="button" data-learn="c2">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C3 -->
+  <article class="prob" data-prob="c3">
+    <h2 id="c3">Soal 3 <span class="tag">Tekanan atmosfer &amp; pegas</span></h2>
+    <div class="q">
+      <figure class="fig-r">
+        <svg viewBox="0 0 240 230" width="230" role="img" aria-label="Silinder dengan piston dan pegas, bawah vakum">
+          <path class="s-ln" d="M60,30 V212 H160 V30"/>
+          <rect class="s-solid" x="61" y="92" width="98" height="12"/>
+          <polyline class="s-sp" points="110,104 95,113 125,122 95,131 125,140 95,149 125,158 95,167 125,176 95,185 125,194 110,203 110,212"/>
+          <line class="s-ar" x1="110" y1="4" x2="110" y2="88"/>
+          <text class="s-ta" x="120" y="30">P₀</text>
+          <text class="s-tm" x="166" y="100">r = 0,024 m</text>
+          <text class="s-tm" x="166" y="160">k = 3600 N/m</text>
+          <text class="s-tm" x="166" y="178">vakum</text>
+        </svg>
+      </figure>
+      <p>Gambar menunjukkan silinder dengan piston berjari-jari 0,024 m yang terhubung dengan pegas dengan konstanta 3600 N/m. Bagian atas silinder dibiarkan terbuka dan piston dapat bergerak dengan gesekan yang dapat diabaikan. Jika udara di bawah piston dipompa keluar tentukanlah (a) perubahan panjang pegas; (b) kerja yang dibutuhkan untuk menekan pegas.</p>
+    </div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">r = 0,024 m</span>, <span class="m">k = 3600 N/m</span>, di bawah piston vakum (<span class="m">P = 0</span>), di atas piston <span class="m">P₀ = 1,013×10⁵ Pa</span></dd><dt>Ditanya</dt><dd>(a) <span class="m">∆x</span>; (b) <span class="m">W</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> Setelah udara di bawah piston dipompa keluar, hanya tekanan atmosfer yang menekan piston dari atas. Massa piston diabaikan, sehingga gaya tekan atmosfer diimbangi gaya pegas.</p>
+      <p>(a) Luas piston: <span class="m">A = πr² = π(0,024)² = 1,81 × 10⁻³ m²</span>.<br>Gaya oleh atmosfer: <span class="m">F = P₀A = (1,013 × 10⁵)(1,81 × 10⁻³) = 183,3 N</span>.<br>Kesetimbangan piston: <span class="m">k∆x = P₀A</span></p>
+      <div class="eq">∆x = <span class="fr"><span>P₀A</span><span>k</span></span> = <span class="fr"><span>183,3</span><span>3600</span></span> = 0,0509 m ≈ 5,09 cm</div>
+      <p>(b) Kerja untuk menekan pegas sama dengan energi potensial pegas:</p>
+      <div class="eq">W = ½k(∆x)² = ½(3600)(0,0509)² = 4,67 J</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">∆x ≈ 5,09 × 10⁻² m = 5,09 cm</span> (pegas memendek) &nbsp; (b) <span class="m">W ≈ 4,67 J</span></p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m5">Materi: Bab 5</a><button class="btn learn" type="button" data-learn="c3">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C4 -->
+  <article class="prob" data-prob="c4">
+    <h2 id="c4">Soal 4 <span class="tag">Bejana berhubungan</span></h2>
+    <div class="q"><p>Dua bejana identik yang terbuka bagian atasnya, saling terhubung pada bagian bawah melalui pipa dan keran yang awalnya ditutup. Bejana sisi kiri dan kanan diisi air dan raksa dengan ketinggian awal sama 1 m. Ketika keran dibuka, tentukanlah ketinggian bejana sisi kiri ketika mencapai setimbang dengan mengingat bahwa air dan raksa tidak saling larut satu dengan lainnya.</p>
+      <p class="small muted">Lihat ilustrasi kondisi sebelum &amp; setimbang di <a href="#m3-2">materi 3.2</a>.</p></div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd>tinggi awal air (kiri) = tinggi awal raksa (kanan) = 1 m; luas penampang kedua bejana sama (<span class="m">A</span>); <span class="m">ρ<sub>air</sub> = 1000 kg/m³</span>, <span class="m">ρ<sub>raksa</sub> = 13.600 kg/m³</span>; volume pipa penghubung diabaikan.</dd><dt>Ditanya</dt><dd>Tinggi permukaan zat cair di bejana kiri saat setimbang.</dd></dl>
+      <p><b>Penyelesaian:</b> Saat keran dibuka, tekanan di dasar bejana kanan (raksa) jauh lebih besar, sehingga raksa mengalir ke bejana kiri dan berada di bawah air (raksa lebih rapat dan tidak larut). Misalkan tebal lapisan raksa yang masuk ke bejana kiri adalah <span class="m">x</span>.</p>
+      <ul>
+        <li>Karena bejana identik, permukaan raksa di kanan turun sebesar <span class="m">x</span>: tinggi raksa kanan <span class="m">= 1 − x</span>.</li>
+        <li>Bejana kiri: raksa setebal <span class="m">x</span> di dasar, di atasnya air setebal 1 m (volume air tetap). Tinggi permukaan kiri <span class="m">= 1 + x</span>.</li>
+      </ul>
+      <p>Ambil titik acuan pada bidang batas air–raksa di bejana kiri (ketinggian <span class="m">x</span> dari dasar). Tekanan pada bidang mendatar dalam zat cair yang sama (raksa) harus sama:</p>
+      <div class="eq">P₀ + ρ<sub>air</sub>g(1) = P₀ + ρ<sub>raksa</sub>g[(1 − x) − x]</div>
+      <div class="eq">1000(1) = 13600(1 − 2x) ⟹ 1 − 2x = <span class="fr"><span>1000</span><span>13600</span></span> = 0,0735 ⟹ x = 0,463 m</div>
+      <p>Tinggi permukaan zat cair di bejana kiri:</p>
+      <div class="eq">h<sub>kiri</sub> = 1 + x = 1 + 0,463 = 1,46 m</div>
+      <p class="small muted">(Sebagai pemeriksaan: tinggi raksa di bejana kanan = 1 − 0,463 = 0,537 m.)</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>Tinggi permukaan bejana kiri saat setimbang <span class="m">≈ 1,46 m</span> dari dasar (terdiri atas raksa 0,463 m dan air 1 m di atasnya).</p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m3">Materi: Bab 3</a><button class="btn learn" type="button" data-learn="c4">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C5 -->
+  <article class="prob" data-prob="c5">
+    <h2 id="c5">Soal 5 <span class="tag">Pompa hidrolik</span></h2>
+    <div class="q">
+      <figure class="fig-r">
+        <svg viewBox="0 0 360 230" width="240" role="img" aria-label="Pompa hidrolik dengan pegas pada piston kecil dan batu pada piston besar">
+          <line class="s-ln" x1="40" y1="12" x2="120" y2="12"/>
+          <polyline class="s-sp" points="80,12 80,20 66,27 94,34 66,41 94,48 66,55 94,62 80,69 80,82"/>
+          <path class="s-w" d="M61,92 H99 V180 H201 V92 H319 V204 H61 Z"/>
+          <path class="s-ln" d="M60,60 V205 H320 V60 M100,60 V180 H200 V60"/>
+          <rect class="s-solid" x="61" y="83" width="38" height="9"/>
+          <rect class="s-solid" x="201" y="83" width="118" height="9"/>
+          <rect class="s-solid" x="232" y="48" width="56" height="35" rx="6"/>
+          <text class="s-t" x="242" y="71">40 kg</text>
+          <text class="s-tm" x="100" y="45">k = 1600 N/m</text>
+          <text class="s-tm" x="64" y="225">15 cm²</text>
+          <text class="s-tm" x="238" y="225">65 cm²</text>
+        </svg>
+      </figure>
+      <p>Gambar menunjukkan pompa hidrolik terdiri dari dua pipa saling terhubung. Pipa berpenampang 15 cm² terhubung dengan pegas konstanta 1600 N/m sedangkan pipa dengan luas 65 cm² mengangkut batu bermassa 40 kg. Jika bagian piston dan pengangkut berada pada ketinggian awal sama dan massanya dapat diabaikan, tentukanlah perubahan panjang pegas.</p>
+    </div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">A₁ = 15 cm² = 1,5 × 10⁻³ m²</span>, <span class="m">k = 1600 N/m</span>, <span class="m">A₂ = 65 cm² = 6,5 × 10⁻³ m²</span>, <span class="m">m = 40 kg</span></dd><dt>Ditanya</dt><dd>Perubahan panjang pegas <span class="m">∆x</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> Menurut hukum Pascal, tekanan yang diberikan batu diteruskan sama besar ke seluruh fluida:</p>
+      <div class="eq">P = <span class="fr"><span>mg</span><span>A₂</span></span> = <span class="fr"><span>(40)(9,8)</span><span>6,5 × 10⁻³</span></span> = 6,03 × 10⁴ Pa</div>
+      <p>Gaya yang dikerjakan fluida pada piston kecil (yang ditahan pegas):</p>
+      <div class="eq">F₁ = PA₁ = <span class="fr"><span>A₁</span><span>A₂</span></span>mg = <span class="fr"><span>15</span><span>65</span></span>(392) = 90,5 N</div>
+      <p>Pegas tertekan hingga gaya pegas mengimbangi <span class="m">F₁</span>:</p>
+      <div class="eq">k∆x = F₁ ⟹ ∆x = <span class="fr"><span>90,5</span><span>1600</span></span> = 0,0565 m ≈ 5,65 cm</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>Pegas tertekan (memendek) sebesar <span class="m">∆x ≈ 5,65 × 10⁻² m = 5,65 cm</span>.</p></div>
+      <p class="small muted"><b>Catatan:</b> jenis fluida tidak diberikan, sehingga beda tinggi kecil yang muncul antara kedua piston diabaikan. Jika fluidanya air dan beda tinggi itu ikut dihitung, hasilnya sedikit lebih kecil, yaitu ≈ 5,59 cm.</p>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m4">Materi: Bab 4</a><button class="btn learn" type="button" data-learn="c5">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C6 -->
+  <article class="prob" data-prob="c6">
+    <h2 id="c6">Soal 6 <span class="tag">Archimedes · bola berongga</span></h2>
+    <div class="q"><p>Bola berongga dengan jari-jari terkecil 8 cm dan jari-jari terbesar 9 cm mengambang pada cairan dengan kerapatan 800 kg/m³. Jika hanya setengah dari bola yang terendam pada cairan tentukanlah (a) massa bola; (b) rapat jenis bola.</p></div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">r<sub>dalam</sub> = 0,08 m</span>, <span class="m">R<sub>luar</sub> = 0,09 m</span>, <span class="m">ρ<sub>c</sub> = 800 kg/m³</span>, <span class="m">V<sub>celup</sub> = ½V<sub>bola</sub></span></dd><dt>Ditanya</dt><dd>(a) <span class="m">m</span>; (b) <span class="m">ρ</span> bahan bola.</dd></dl>
+      <p><b>Penyelesaian:</b> (a) Volume yang tercelup (setengah volume luar bola):</p>
+      <div class="eq">V<sub>celup</sub> = ½ · ⁴⁄₃πR³ = ⅔π(0,09)³ = 1,527 × 10⁻³ m³</div>
+      <p>Bola mengapung, sehingga berat = gaya apung:</p>
+      <div class="eq">mg = ρ<sub>c</sub>gV<sub>celup</sub> ⟹ m = ρ<sub>c</sub>V<sub>celup</sub> = (800)(1,527 × 10⁻³) = 1,22 kg</div>
+      <p>(b) Volume bahan (kulit) bola:</p>
+      <div class="eq">V<sub>bahan</sub> = ⁴⁄₃π(R³ − r³) = ⁴⁄₃π(0,000729 − 0,000512) = 9,09 × 10⁻⁴ m³</div>
+      <div class="eq">ρ<sub>bahan</sub> = <span class="fr"><span>m</span><span>V<sub>bahan</sub></span></span> = <span class="fr"><span>1,22</span><span>9,09 × 10⁻⁴</span></span> = 1,34 × 10³ kg/m³</div>
+      <p class="small muted">(Rapat jenis rata-rata bola utuh termasuk rongganya: <span class="m">ρ<sub>rata-rata</sub> = m/V<sub>bola</sub> = ½ρ<sub>c</sub> = 400 kg/m³</span>.)</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">m ≈ 1,22 kg</span> &nbsp; (b) <span class="m">ρ<sub>bahan</sub> ≈ 1,34 × 10³ kg/m³</span> (rata-rata bola berongga = 400 kg/m³)</p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m6-3">Materi: 6.3</a><button class="btn learn" type="button" data-learn="c6">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C7 -->
+  <article class="prob" data-prob="c7">
+    <h2 id="c7">Soal 7 <span class="tag">Balon udara</span></h2>
+    <div class="q"><p>Tentukanlah percepatan balon udara yang bergerak menjauh dari permukaan bumi jika perbandingan kerapatan udara di luar dan dalam balon adalah 1,39. Abaikan massa bahan pembuat balon dan keranjang.</p></div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">ρ<sub>luar</sub>/ρ<sub>dalam</sub> = 1,39</span>; massa balon dan keranjang diabaikan.</dd><dt>Ditanya</dt><dd>Percepatan balon <span class="m">a</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> Massa sistem hanyalah udara panas di dalam balon: <span class="m">m = ρ<sub>dalam</sub>V</span>. Gaya yang bekerja: gaya apung ke atas <span class="m">F<sub>A</sub> = ρ<sub>luar</sub>Vg</span> dan berat ke bawah <span class="m">W = ρ<sub>dalam</sub>Vg</span>. Hukum II Newton:</p>
+      <div class="eq">ρ<sub>luar</sub>Vg − ρ<sub>dalam</sub>Vg = ρ<sub>dalam</sub>Va</div>
+      <div class="eq">a = <span class="m">(</span><span class="fr"><span>ρ<sub>luar</sub></span><span>ρ<sub>dalam</sub></span></span> − 1<span class="m">)</span>g = (1,39 − 1)(9,8) = 3,82 m/s²</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p><span class="m">a ≈ 3,82 m/s²</span>, arah ke atas (gaya hambat udara diabaikan).</p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m6-5">Materi: 6.5</a><button class="btn learn" type="button" data-learn="c7">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C8 -->
+  <article class="prob" data-prob="c8">
+    <h2 id="c8">Soal 8 <span class="tag">Archimedes · tegangan tali</span></h2>
+    <div class="q">
+      <figure class="fig-r">
+        <svg viewBox="0 0 260 240" width="230" role="img" aria-label="Balok digantung tali dalam tangki terbuka">
+          <rect class="s-w" x="31" y="50" width="198" height="179"/>
+          <path class="s-ln" d="M30,20 V230 H230 V20"/>
+          <line class="s-thin" x1="30" y1="50" x2="230" y2="50"/>
+          <line class="s-thin" x1="130" y1="0" x2="130" y2="90"/>
+          <text class="s-t" x="136" y="16">T</text>
+          <text class="s-tm" x="160" y="40">P₀ = 1 atm</text>
+          <rect class="s-solid" x="85" y="90" width="90" height="90"/>
+          <text class="s-t" x="113" y="140">L</text>
+          <line class="s-dash" x1="200" y1="50" x2="200" y2="90"/>
+          <line class="s-dash" x1="175" y1="90" x2="206" y2="90"/>
+          <text class="s-tm" x="204" y="75">L/2</text>
+          <text class="s-tm" x="40" y="215">ρ = 1030 kg/m³</text>
+        </svg>
+      </figure>
+      <p>Balok dengan sisi L = 0,6 m, massa 450 kg digantung pada tangki terbuka seperti ditunjukkan pada gambar. Jika tekanan atmosfer 1 atm dan kerapatan cairan pada balok berada adalah 1030 kg/m³. Tentukanlah: (a) besar gaya apung; (b) tegangan tali.</p>
+    </div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">L = 0,6 m</span>, <span class="m">m = 450 kg</span>, <span class="m">ρ = 1030 kg/m³</span>, <span class="m">P₀ = 1,013 × 10⁵ Pa</span>, permukaan atas balok berada <span class="m">L/2 = 0,3 m</span> di bawah permukaan cairan (balok tercelup seluruhnya).</dd><dt>Ditanya</dt><dd>(a) <span class="m">F<sub>A</sub></span>; (b) <span class="m">T</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> Luas sisi balok <span class="m">A = L² = 0,36 m²</span>, volume <span class="m">V = L³ = 0,216 m³</span>.</p>
+      <p>(a) Gaya tekan fluida pada sisi atas (kedalaman 0,3 m) dan sisi bawah (kedalaman 0,9 m):</p>
+      <div class="eq">F<sub>atas</sub> = (P₀ + ρg·L/2)A = (1,013 × 10⁵ + 1030·9,8·0,3)(0,36) = 3,756 × 10⁴ N</div>
+      <div class="eq">F<sub>bawah</sub> = (P₀ + ρg·3L/2)A = (1,013 × 10⁵ + 1030·9,8·0,9)(0,36) = 3,974 × 10⁴ N</div>
+      <p>Gaya apung adalah selisihnya (sama dengan hukum Archimedes):</p>
+      <div class="eq">F<sub>A</sub> = F<sub>bawah</sub> − F<sub>atas</sub> = ρgV = (1030)(9,8)(0,216) = 2180 N</div>
+      <p>(b) Balok diam, sehingga <span class="m">T + F<sub>A</sub> = mg</span>:</p>
+      <div class="eq">T = mg − F<sub>A</sub> = (450)(9,8) − 2180 = 4410 − 2180 = 2230 N</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">F<sub>A</sub> ≈ 2,18 × 10³ N</span> &nbsp; (b) <span class="m">T ≈ 2,23 × 10³ N</span></p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m6-1">Materi: 6.1 &amp; 6.4</a><button class="btn learn" type="button" data-learn="c8">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C9 -->
+  <article class="prob" data-prob="c9">
+    <h2 id="c9">Soal 9 <span class="tag">Bernoulli · sayap pesawat</span></h2>
+    <div class="q"><p>Luas penampang efektif permukaan sayap pesawat yang menimbulkan gaya angkat adalah 16 m². Pada keadaan terbang mendatar, kecepatan udara pada bagian atas sayap adalah 62 m/s sedangkan pada bagian bawah adalah 54 m/s. Tentukanlah (a) perbedaan tekanan pada kedua sisi sayap; (b) gaya terkait akibat perbedaan tekanan tersebut.</p></div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">A = 16 m²</span>, <span class="m">v<sub>atas</sub> = 62 m/s</span>, <span class="m">v<sub>bawah</sub> = 54 m/s</span>, <span class="m">ρ<sub>udara</sub> = 1,29 kg/m³</span></dd><dt>Ditanya</dt><dd>(a) <span class="m">∆P</span>; (b) <span class="m">F</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> (a) Persamaan Bernoulli untuk kedua sisi sayap (beda ketinggian diabaikan):</p>
+      <div class="eq">P<sub>bawah</sub> + ½ρv<sub>bawah</sub>² = P<sub>atas</sub> + ½ρv<sub>atas</sub>²</div>
+      <div class="eq">∆P = P<sub>bawah</sub> − P<sub>atas</sub> = ½ρ(v<sub>atas</sub>² − v<sub>bawah</sub>²) = ½(1,29)(3844 − 2916) = 599 Pa</div>
+      <p>(b) Gaya angkat:</p>
+      <div class="eq">F = ∆P · A = (598,6)(16) = 9,58 × 10³ N</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">∆P ≈ 599 Pa</span> (tekanan di bawah sayap lebih besar) &nbsp; (b) <span class="m">F ≈ 9,58 × 10³ N</span>, arah ke atas (gaya angkat)</p></div>
+      <p class="small muted"><b>Catatan:</b> jika dosen memakai ρ<sub>udara</sub> = 1,20 kg/m³, hasilnya ∆P ≈ 557 Pa dan F ≈ 8,91 × 10³ N.</p>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m8-3">Materi: 8.3</a><button class="btn learn" type="button" data-learn="c9">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <!-- C10 -->
+  <article class="prob" data-prob="c10">
+    <h2 id="c10">Soal 10 <span class="tag">Kontinuitas &amp; Bernoulli</span></h2>
+    <div class="q">
+      <figure>
+        <svg viewBox="0 0 460 170" width="420" role="img" aria-label="Pipa horizontal kiri diameter 5 cm menyempit ke kanan 3 cm, air keluar dengan v1 15 m/s">
+          <path class="s-w" d="M20,30 H220 L260,55 H420 V115 H260 L220,140 H20 Z"/>
+          <path class="s-ln" d="M20,30 H220 L260,55 H420 M20,140 H220 L260,115 H420"/>
+          <line class="s-ar" x1="60" y1="85" x2="120" y2="85"/>
+          <line class="s-ar" x1="380" y1="85" x2="452" y2="85"/>
+          <text class="s-t" x="70" y="74">v₂, P₂</text>
+          <text class="s-t" x="300" y="80">v₁ = 15 m/s</text>
+          <text class="s-tm" x="40" y="162">d₂ = 5 cm (kiri)</text>
+          <text class="s-tm" x="270" y="135">d₁ = 3 cm (keluar, P₁ = P₀)</text>
+        </svg>
+      </figure>
+      <p>Gambar menunjukkan air yang mengalir pada pipa horizontal dan selanjutnya keluar dengan laju v₁ = 15 m/s. Diameter sisi kiri pipa 5 cm sedangkan pipa kanan adalah 3 cm. Tentukanlah (a) volume air yang mengalir keluar pada periode 10 menit; (b) besar kecepatan v₂; (c) besar tekanan P₂.</p>
+    </div>
+    <details class="sol"><summary>Lihat pembahasan</summary><div class="inner">
+      <dl class="kv"><dt>Diketahui</dt><dd><span class="m">v₁ = 15 m/s</span>, <span class="m">d₁ = 3 cm</span> (kanan, ujung keluar), <span class="m">d₂ = 5 cm</span> (kiri), <span class="m">t = 10 menit = 600 s</span>, <span class="m">P₁ = P₀ = 1,013 × 10⁵ Pa</span> (air keluar ke udara terbuka), <span class="m">ρ = 1000 kg/m³</span></dd><dt>Ditanya</dt><dd>(a) <span class="m">V</span>; (b) <span class="m">v₂</span>; (c) <span class="m">P₂</span>.</dd></dl>
+      <p><b>Penyelesaian:</b> (a) Luas penampang ujung keluar: <span class="m">A₁ = ¼πd₁² = ¼π(0,03)² = 7,07 × 10⁻⁴ m²</span>.<br>Debit: <span class="m">Q = A₁v₁ = (7,07 × 10⁻⁴)(15) = 1,06 × 10⁻² m³/s</span>.</p>
+      <div class="eq">V = Qt = (1,06 × 10⁻²)(600) = 6,36 m³</div>
+      <p>(b) Persamaan kontinuitas <span class="m">A₁v₁ = A₂v₂</span>:</p>
+      <div class="eq">v₂ = v₁<span class="m">(</span><span class="fr"><span>d₁</span><span>d₂</span></span><span class="m">)²</span> = 15<span class="m">(</span><span class="fr"><span>3</span><span>5</span></span><span class="m">)²</span> = 5,4 m/s</div>
+      <p>(c) Persamaan Bernoulli (pipa horizontal, <span class="m">h₁ = h₂</span>):</p>
+      <div class="eq">P₂ + ½ρv₂² = P₁ + ½ρv₁²</div>
+      <div class="eq">P₂ = P₁ + ½ρ(v₁² − v₂²) = 1,013 × 10⁵ + ½(1000)(225 − 29,16)</div>
+      <div class="eq">P₂ = 1,013 × 10⁵ + 9,79 × 10⁴ = 1,99 × 10⁵ Pa</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">V ≈ 6,36 m³</span> &nbsp; (b) <span class="m">v₂ = 5,4 m/s</span> &nbsp; (c) <span class="m">P₂ ≈ 1,99 × 10⁵ Pa</span> (mutlak) ≈ 1,97 atm; tekanan terukur ≈ 9,79 × 10⁴ Pa</p></div>
+    </div></details>
+    <div class="toolbar"><a class="btn" href="#m7">Materi: Bab 7 &amp; 8</a><button class="btn learn" type="button" data-learn="c10">Tandai sudah dipelajari</button></div>
+  </article>
+
+  <h2 id="c-ringkasan">Ringkasan Jawaban</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>No.</th><th>Rumus utama</th><th>Jawaban akhir</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td class="m">∆P = ρgh</td><td><span class="m">∆P ≈ 1,66 × 10⁴ Pa</span> (≈ 125 mmHg)</td></tr>
+      <tr><td class="c">2</td><td class="m">P = F/(πr²)</td><td><span class="m">P ≈ 1,34 × 10⁵ Pa</span> (gauge); <span class="m">≈ 2,35 × 10⁵ Pa</span> (mutlak)</td></tr>
+      <tr><td class="c">3</td><td><span class="m">k∆x = P₀πr²</span>; <span class="m">W = ½k∆x²</span></td><td>(a) <span class="m">∆x ≈ 5,09 cm</span> (b) <span class="m">W ≈ 4,67 J</span></td></tr>
+      <tr><td class="c">4</td><td class="m">ρ<sub>air</sub>(1) = ρ<sub>Hg</sub>(1 − 2x)</td><td><span class="m">x = 0,463 m</span>; tinggi bejana kiri <span class="m">≈ 1,46 m</span></td></tr>
+      <tr><td class="c">5</td><td class="m">k∆x = (A₁/A₂)mg</td><td><span class="m">∆x ≈ 5,65 cm</span> (pegas tertekan)</td></tr>
+      <tr><td class="c">6</td><td><span class="m">m = ρ<sub>c</sub>·⅔πR³</span>; <span class="m">ρ = m/V<sub>kulit</sub></span></td><td>(a) <span class="m">m ≈ 1,22 kg</span> (b) <span class="m">ρ ≈ 1,34 × 10³ kg/m³</span></td></tr>
+      <tr><td class="c">7</td><td class="m">a = (ρ<sub>luar</sub>/ρ<sub>dalam</sub> − 1)g</td><td><span class="m">a ≈ 3,82 m/s²</span> ke atas</td></tr>
+      <tr><td class="c">8</td><td><span class="m">F<sub>A</sub> = ρgL³</span>; <span class="m">T = mg − F<sub>A</sub></span></td><td>(a) <span class="m">F<sub>A</sub> ≈ 2,18 × 10³ N</span> (b) <span class="m">T ≈ 2,23 × 10³ N</span></td></tr>
+      <tr><td class="c">9</td><td><span class="m">∆P = ½ρ(v<sub>a</sub>² − v<sub>b</sub>²)</span>; <span class="m">F = ∆PA</span></td><td>(a) <span class="m">∆P ≈ 599 Pa</span> (b) <span class="m">F ≈ 9,58 × 10³ N</span></td></tr>
+      <tr><td class="c">10</td><td><span class="m">Q = A₁v₁</span>; <span class="m">A₁v₁ = A₂v₂</span>; Bernoulli</td><td>(a) <span class="m">V ≈ 6,36 m³</span> (b) <span class="m">v₂ = 5,4 m/s</span> (c) <span class="m">P₂ ≈ 1,99 × 10⁵ Pa</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Asumsi umum: g = 9,8 m/s²; P₀ = 1,013 × 10⁵ Pa; massa piston, pegas, dan pipa penghubung diabaikan; aliran ideal (tak kental, tak termampatkan) pada soal 9–10.</p>
+  <div class="pill-nav"><a href="#materi"><small>← Kembali</small>Materi</a><a class="nx" href="#latihan"><small>Lanjut →</small>Latihan Soal</a></div>
+</section>
+
+<!-- ================================================================ LATIHAN -->
+<section class="view" id="latihan" data-label="Latihan" hidden>
+  <span class="eyebrow">Latihan Mandiri · 10 Soal</span>
+  <h1>Latihan Soal Fluida</h1>
+  <p class="lead">Pendamping Rangkuman Materi Fluida – FI-1101 Fisika Dasar I.</p>
+  <div class="box"><div class="bt">Petunjuk</div>
+    <ul>
+      <li>Kerjakan dengan format <b>Diketahui – Ditanya – Penyelesaian</b>. Ubah semua besaran ke satuan SI.</li>
+      <li>Konstanta (kecuali disebutkan lain): <span class="m">g = 9,8 m/s²</span>; <span class="m">P₀ = 1,013 × 10⁵ Pa</span>; <span class="m">ρ<sub>air</sub> = 1000 kg/m³</span>; <span class="m">ρ<sub>raksa</sub> = 13.600 kg/m³</span>; <span class="m">ρ<sub>udara</sub> = 1,29 kg/m³</span>.</li>
+      <li>Isi kotak <b>Cek jawaban</b> dengan angka dalam satuan yang tertera (contoh: <span class="m">1,21e5</span>, <span class="m">1,21x10^5</span>, atau <span class="m">121000</span>). Toleransi ±2% untuk pembulatan.</li>
+      <li>Kunci jawaban dan pembahasan ada di tiap soal. Coba kerjakan dulu sebelum membukanya.</li>
+    </ul>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>No.</th><th>Topik</th><th>No.</th><th>Topik</th></tr></thead>
+    <tbody>
+      <tr><td class="c"><a href="#l1">1</a></td><td>Tekanan hidrostatik &amp; gaya tekan</td><td class="c"><a href="#l6">6</a></td><td>Bola berongga melayang</td></tr>
+      <tr><td class="c"><a href="#l2">2</a></td><td>Tekanan atmosfer, piston &amp; pegas</td><td class="c"><a href="#l7">7</a></td><td>Berat semu (neraca pegas)</td></tr>
+      <tr><td class="c"><a href="#l3">3</a></td><td>Tabung U dua zat cair</td><td class="c"><a href="#l8">8</a></td><td>Balon udara helium</td></tr>
+      <tr><td class="c"><a href="#l4">4</a></td><td>Dongkrak hidrolik</td><td class="c"><a href="#l9">9</a></td><td>Gaya angkat sayap pesawat</td></tr>
+      <tr><td class="c"><a href="#l5">5</a></td><td>Balok terapung</td><td class="c"><a href="#l10">10</a></td><td>Kontinuitas &amp; Bernoulli</td></tr>
+    </tbody>
+  </table></div>
+  <div class="toolbar">
+    <button class="btn" type="button" data-toggle-all="latihan" data-open="1">Buka semua kunci</button>
+    <button class="btn" type="button" data-toggle-all="latihan" data-open="0">Tutup semua</button>
+    <button class="btn" type="button" id="resetLat">Reset jawaban &amp; progres</button>
+  </div>
+
+  <!-- L1 -->
+  <article class="prob" data-prob="l1">
+    <h2 id="l1">Soal 1 <span class="tag">Tekanan hidrostatik</span></h2>
+    <div class="q"><p>Seorang penyelam berada pada kedalaman 12 m di bawah permukaan laut yang massa jenisnya 1025 kg/m³. Tentukan:</p>
+      <ol><li>tekanan hidrostatik (tekanan terukur) yang dialami penyelam;</li><li>tekanan mutlak yang dialami penyelam, dalam Pa dan atm;</li><li>gaya tekan air terhadap kaca masker penyelam yang luasnya 50 cm² (anggap udara di dalam masker bertekanan 1 atm, sehingga yang bekerja hanya tekanan terukur).</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="120540" aria-label="1a"><span class="u">Pa</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="221840" aria-label="1b Pa"><span class="u">Pa</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="2.19" aria-label="1b atm"><span class="u">atm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="603" aria-label="1c"><span class="u">N</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) <span class="m">P<sub>h</sub> = ρgh = (1025)(9,8)(12) = 1,205 × 10⁵ Pa</span>.</p>
+      <p>(b) <span class="m">P = P₀ + P<sub>h</sub> = 1,013 × 10⁵ + 1,205 × 10⁵ = 2,22 × 10⁵ Pa</span>; dalam atm: <span class="m">2,218 × 10⁵ / 1,013 × 10⁵ ≈ 2,19 atm</span>.</p>
+      <p>(c) <span class="m">A = 50 cm² = 5 × 10⁻³ m²</span>; <span class="m">F = P<sub>h</sub>A = (1,2054 × 10⁵)(5 × 10⁻³) ≈ 603 N</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">1,21 × 10⁵ Pa</span> &nbsp; (b) <span class="m">2,22 × 10⁵ Pa ≈ 2,19 atm</span> &nbsp; (c) <span class="m">≈ 603 N</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L2 -->
+  <article class="prob" data-prob="l2">
+    <h2 id="l2">Soal 2 <span class="tag">Piston, vakum &amp; pegas</span></h2>
+    <div class="q">
+      <figure class="fig-r">
+        <svg viewBox="0 0 240 230" width="210" role="img" aria-label="Silinder tegak terbuka di atas, piston ditopang pegas, bawah vakum">
+          <path class="s-ln" d="M60,30 V212 H160 V30"/>
+          <rect class="s-solid" x="61" y="92" width="98" height="12"/>
+          <polyline class="s-sp" points="110,104 95,113 125,122 95,131 125,140 95,149 125,158 95,167 125,176 95,185 125,194 110,203 110,212"/>
+          <line class="s-ar" x1="110" y1="4" x2="110" y2="88"/>
+          <text class="s-ta" x="120" y="30">P₀</text>
+          <text class="s-tm" x="166" y="100">r = 3 cm</text>
+          <text class="s-tm" x="166" y="160">k = 5000 N/m</text>
+          <text class="s-tm" x="166" y="178">vakum</text>
+        </svg>
+      </figure>
+      <p>Sebuah silinder tegak yang bagian atasnya terbuka memiliki piston berjari-jari 3 cm. Piston ditopang pegas dengan konstanta 5000 N/m yang berada di bawah piston. Massa piston dan gesekan diabaikan. Mula-mula di bawah piston terdapat udara bertekanan 1 atm dan pegas tidak tertekan. Udara di bawah piston kemudian dipompa keluar hingga vakum. Tentukan:</p>
+      <ol><li>gaya yang dikerjakan atmosfer pada piston;</li><li>perubahan panjang pegas;</li><li>energi yang tersimpan dalam pegas.</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="286.4" aria-label="2a"><span class="u">N</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="5.73" aria-label="2b"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="8.20" aria-label="2c"><span class="u">J</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) <span class="m">A = πr² = π(0,03)² = 2,83 × 10⁻³ m²</span>; <span class="m">F = P₀A = (1,013 × 10⁵)(2,83 × 10⁻³) ≈ 286 N</span>.</p>
+      <p>(b) Kesetimbangan piston (bawah vakum): <span class="m">k∆x = P₀A ⟹ ∆x = 286,4/5000 = 0,0573 m</span>.</p>
+      <p>(c) <span class="m">E<sub>p</sub> = ½k(∆x)² = ½(5000)(0,0573)² ≈ 8,20 J</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">≈ 286 N</span> &nbsp; (b) <span class="m">≈ 5,73 cm</span> (pegas memendek) &nbsp; (c) <span class="m">≈ 8,20 J</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L3 -->
+  <article class="prob" data-prob="l3">
+    <h2 id="l3">Soal 3 <span class="tag">Tabung U</span></h2>
+    <div class="q">
+      <figure class="fig-r">
+        <svg viewBox="0 0 260 225" width="210" role="img" aria-label="Tabung U berisi raksa dengan air 20 cm di kaki kiri">
+          <path class="s-hg" d="M60,130 H100 V170 H160 V112 H200 V180 Q200,210 170,210 H90 Q60,210 60,180 Z"/>
+          <rect class="s-w" x="60" y="50" width="40" height="80"/>
+          <path class="s-ln" d="M60,15 V180 Q60,210 90,210 H170 Q200,210 200,180 V15 M100,15 V170 H160 V15"/>
+          <line class="s-dash" x1="40" y1="130" x2="220" y2="130"/>
+          <line class="s-dash" x1="40" y1="50" x2="40" y2="130"/>
+          <text class="s-t" x="4" y="95">20 cm</text>
+          <text class="s-t" x="66" y="95">air</text>
+          <text class="s-t" x="110" y="198">raksa</text>
+          <text class="s-tm" x="205" y="124">∆h</text>
+        </svg>
+      </figure>
+      <p>Sebuah tabung U dengan luas penampang kedua kakinya sama, mula-mula berisi raksa. Ke dalam kaki kiri dituangkan air setinggi 20 cm. Air dan raksa tidak bercampur. Setelah setimbang, tentukan:</p>
+      <ol><li>selisih tinggi permukaan raksa di kaki kanan dan kaki kiri;</li><li>seberapa jauh permukaan raksa di kaki kanan naik dari kedudukan awalnya;</li><li>selisih tinggi permukaan air (kiri) dan permukaan raksa (kanan).</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="1.47" aria-label="3a"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="0.735" data-tol="0.03" aria-label="3b"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="18.53" aria-label="3c"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>Bidang acuan dipilih pada batas air–raksa di kaki kiri. Di kaki kanan, pada ketinggian yang sama, ada kolom raksa setinggi <span class="m">∆h</span> di atasnya:</p>
+      <div class="eq">ρ<sub>air</sub>h<sub>air</sub> = ρ<sub>raksa</sub>∆h ⟹ ∆h = <span class="fr"><span>1000 × 20</span><span>13600</span></span> ≈ 1,47 cm</div>
+      <p>(b) Luas kedua kaki sama, jadi raksa kiri turun dan raksa kanan naik dengan besar yang sama: <span class="m">∆h/2 ≈ 0,74 cm</span>.</p>
+      <p>(c) Permukaan air berada 20 cm di atas bidang batas, sedangkan permukaan raksa kanan 1,47 cm di atas bidang batas. Selisihnya <span class="m">20 − 1,47 ≈ 18,5 cm</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">≈ 1,47 cm</span> &nbsp; (b) <span class="m">≈ 0,74 cm</span> &nbsp; (c) <span class="m">≈ 18,5 cm</span> (air lebih tinggi)</p></div>
+    </div></details>
+  </article>
+
+  <!-- L4 -->
+  <article class="prob" data-prob="l4">
+    <h2 id="l4">Soal 4 <span class="tag">Dongkrak hidrolik</span></h2>
+    <div class="q"><p>Sebuah dongkrak hidrolik memiliki piston kecil dengan luas penampang 10 cm² dan piston besar dengan luas penampang 200 cm². Dongkrak digunakan untuk mengangkat mobil bermassa 1200 kg yang diletakkan di atas piston besar. Kedua piston berada pada ketinggian sama dan massanya diabaikan. Tentukan:</p>
+      <ol><li>gaya minimum yang harus diberikan pada piston kecil;</li><li>kenaikan mobil jika piston kecil ditekan turun sejauh 30 cm;</li><li>usaha yang dilakukan pada piston kecil, lalu bandingkan dengan pertambahan energi potensial mobil.</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="588" aria-label="4a"><span class="u">N</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="1.5" aria-label="4b"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="176.4" aria-label="4c"><span class="u">J</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <div class="eq">(a) Hukum Pascal: F₁ = <span class="fr"><span>A₁</span><span>A₂</span></span>mg = <span class="fr"><span>10</span><span>200</span></span>(1200)(9,8) = 588 N</div>
+      <div class="eq">(b) Volume yang dipindahkan sama: A₁d₁ = A₂d₂ ⟹ d₂ = <span class="fr"><span>10</span><span>200</span></span>(30) = 1,5 cm</div>
+      <p>(c) <span class="m">W₁ = F₁d₁ = (588)(0,30) = 176,4 J</span>; <span class="m">∆E<sub>p</sub> = mgd₂ = (11.760)(0,015) = 176,4 J</span>. Keduanya sama: dongkrak melipatgandakan gaya, tetapi tidak menghasilkan energi.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">588 N</span> &nbsp; (b) <span class="m">1,5 cm</span> &nbsp; (c) <span class="m">176,4 J</span>, sama dengan <span class="m">∆E<sub>p</sub></span> mobil</p></div>
+    </div></details>
+  </article>
+
+  <!-- L5 -->
+  <article class="prob" data-prob="l5">
+    <h2 id="l5">Soal 5 <span class="tag">Balok terapung</span></h2>
+    <div class="q"><p>Sebuah balok kayu berbentuk kubus dengan rusuk 20 cm dan massa jenis 600 kg/m³ terapung di air. Tentukan:</p>
+      <ol><li>tinggi bagian balok yang berada di atas permukaan air;</li><li>massa beban minimum yang harus diletakkan di atas balok agar seluruh balok tepat tercelup (permukaan atasnya rata dengan permukaan air).</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="8" aria-label="5a"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="3.2" aria-label="5b"><span class="u">kg</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) Benda terapung: <span class="m">V<sub>celup</sub>/V = ρ<sub>kayu</sub>/ρ<sub>air</sub> = 600/1000 = 0,6</span>. Bagian tercelup <span class="m">0,6 × 20 = 12 cm</span>, sehingga bagian di atas air = <b>8 cm</b>.</p>
+      <p>(b) Tepat tercelup seluruhnya: <span class="m">(m<sub>kayu</sub> + m<sub>beban</sub>)g = ρ<sub>air</sub>gV</span>, dengan <span class="m">V = (0,2)³ = 8 × 10⁻³ m³</span>:</p>
+      <div class="eq">m<sub>beban</sub> = (ρ<sub>air</sub> − ρ<sub>kayu</sub>)V = (1000 − 600)(8 × 10⁻³) = 3,2 kg</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">8 cm</span> &nbsp; (b) <span class="m">3,2 kg</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L6 -->
+  <article class="prob" data-prob="l6">
+    <h2 id="l6">Soal 6 <span class="tag">Bola berongga melayang</span></h2>
+    <div class="q"><p>Sebuah bola baja berongga (massa jenis baja 7800 kg/m³) memiliki jari-jari luar 10 cm. Bola tersebut tepat melayang di dalam air. Tentukan:</p>
+      <ol><li>massa bola;</li><li>jari-jari dalam (jari-jari rongga) bola dan tebal kulitnya.</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="4.189" aria-label="6a"><span class="u">kg</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b) r</label><input inputmode="decimal" data-ans="9.553" data-tol="0.01" aria-label="6b jari-jari dalam"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b) tebal</label><input inputmode="decimal" data-ans="0.447" data-tol="0.05" aria-label="6b tebal"><span class="u">cm</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) Melayang berarti <span class="m">mg = ρ<sub>air</sub>gV<sub>luar</sub></span>: <span class="m">m = 1000 · ⁴⁄₃π(0,1)³ = 1000(4,189 × 10⁻³) ≈ 4,19 kg</span>.</p>
+      <p>(b) Volume bahan: <span class="m">V<sub>bahan</sub> = m/ρ<sub>baja</sub> = 4,189/7800 = 5,37 × 10⁻⁴ m³</span>. Dari <span class="m">V<sub>bahan</sub> = ⁴⁄₃π(R³ − r³)</span>:</p>
+      <div class="eq">r³ = R³<span class="m">(</span>1 − <span class="fr"><span>ρ<sub>air</sub></span><span>ρ<sub>baja</sub></span></span><span class="m">)</span> = (0,1)³<span class="m">(</span>1 − <span class="fr"><span>1000</span><span>7800</span></span><span class="m">)</span> = 8,72 × 10⁻⁴ m³ ⟹ r ≈ 0,0955 m</div>
+      <p>Tebal kulit <span class="m">= R − r = 10 − 9,55 ≈ 0,45 cm</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">≈ 4,19 kg</span> &nbsp; (b) <span class="m">r ≈ 9,55 cm</span>; tebal kulit <span class="m">≈ 0,45 cm</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L7 -->
+  <article class="prob" data-prob="l7">
+    <h2 id="l7">Soal 7 <span class="tag">Berat semu</span></h2>
+    <div class="q"><p>Sebuah batu bermassa 3 kg digantung pada neraca pegas, lalu dicelupkan seluruhnya ke dalam air tanpa menyentuh dasar wadah. Neraca menunjukkan 20 N. Tentukan:</p>
+      <ol><li>gaya apung yang dialami batu;</li><li>volume batu;</li><li>massa jenis batu;</li><li>angka yang ditunjukkan neraca jika batu dicelupkan seluruhnya ke dalam minyak bermassa jenis 800 kg/m³.</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="9.4" aria-label="7a"><span class="u">N</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="9.592e-4" aria-label="7b"><span class="u">m³</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="3128" aria-label="7c"><span class="u">kg/m³</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(d)</label><input inputmode="decimal" data-ans="21.88" aria-label="7d"><span class="u">N</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) <span class="m">W = mg = 29,4 N</span>; neraca menunjukkan tegangan tali <span class="m">T = 20 N</span>. Dari <span class="m">T + F<sub>A</sub> = W</span>: <span class="m">F<sub>A</sub> = 29,4 − 20 = 9,4 N</span>.</p>
+      <div class="eq">(b) V = <span class="fr"><span>F<sub>A</sub></span><span>ρ<sub>air</sub>g</span></span> = <span class="fr"><span>9,4</span><span>(1000)(9,8)</span></span> = 9,59 × 10⁻⁴ m³</div>
+      <p>(c) <span class="m">ρ<sub>batu</sub> = m/V = 3/(9,59 × 10⁻⁴) ≈ 3,13 × 10³ kg/m³</span>.</p>
+      <p>(d) <span class="m">F<sub>A</sub>′ = (800)(9,8)(9,59 × 10⁻⁴) = 7,52 N</span>; <span class="m">T′ = 29,4 − 7,52 ≈ 21,9 N</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">9,4 N</span> &nbsp; (b) <span class="m">9,59 × 10⁻⁴ m³</span> &nbsp; (c) <span class="m">≈ 3,13 × 10³ kg/m³</span> &nbsp; (d) <span class="m">≈ 21,9 N</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L8 -->
+  <article class="prob" data-prob="l8">
+    <h2 id="l8">Soal 8 <span class="tag">Balon helium</span></h2>
+    <div class="q"><p>Sebuah balon berisi helium (massa jenis 0,18 kg/m³) bervolume 500 m³. Massa total kulit balon, keranjang, dan penumpang adalah 300 kg. Gaya hambat udara diabaikan. Tentukan:</p>
+      <ol><li>gaya apung yang dialami balon;</li><li>percepatan awal balon saat dilepaskan dari keadaan diam;</li><li>massa beban tambahan maksimum agar balon masih dapat melayang (tidak turun).</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="6321" aria-label="8a"><span class="u">N</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="6.41" aria-label="8b"><span class="u">m/s²</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="255" aria-label="8c"><span class="u">kg</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) <span class="m">F<sub>A</sub> = ρ<sub>udara</sub>gV = (1,29)(9,8)(500) = 6321 N</span>.</p>
+      <p>(b) Massa total yang dipercepat: <span class="m">m = ρ<sub>He</sub>V + 300 = 90 + 300 = 390 kg</span>; berat = 3822 N. Hukum II Newton:</p>
+      <div class="eq">a = <span class="fr"><span>F<sub>A</sub> − mg</span><span>m</span></span> = <span class="fr"><span>6321 − 3822</span><span>390</span></span> ≈ 6,41 m/s² <span class="lbl-eq">ke atas</span></div>
+      <div class="eq">(c) Melayang: F<sub>A</sub> = (m + m<sub>tambah</sub>)g ⟹ m<sub>tambah</sub> = <span class="fr"><span>F<sub>A</sub></span><span>g</span></span> − m = 645 − 390 = 255 kg</div>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">6321 N</span> &nbsp; (b) <span class="m">≈ 6,41 m/s²</span> ke atas &nbsp; (c) <span class="m">255 kg</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L9 -->
+  <article class="prob" data-prob="l9">
+    <h2 id="l9">Soal 9 <span class="tag">Gaya angkat sayap</span></h2>
+    <div class="q"><p>Sebuah pesawat kecil bermassa 1800 kg terbang mendatar dengan kecepatan tetap. Luas efektif sayapnya 25 m² dan kelajuan udara di bawah sayap 70 m/s. Beda ketinggian sisi atas dan bawah sayap diabaikan. Tentukan:</p>
+      <ol><li>beda tekanan antara sisi bawah dan sisi atas sayap yang diperlukan;</li><li>kelajuan udara di atas sayap.</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="705.6" aria-label="9a"><span class="u">Pa</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="77.42" aria-label="9b"><span class="u">m/s</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <div class="eq">(a) Gaya angkat = berat ⟹ ∆P = <span class="fr"><span>Mg</span><span>A</span></span> = <span class="fr"><span>(1800)(9,8)</span><span>25</span></span> = 705,6 Pa</div>
+      <div class="eq">(b) ∆P = ½ρ(v<sub>a</sub>² − v<sub>b</sub>²) ⟹ v<sub>a</sub>² = v<sub>b</sub>² + <span class="fr"><span>2∆P</span><span>ρ</span></span> = 4900 + <span class="fr"><span>2(705,6)</span><span>1,29</span></span> = 5994 m²/s²</div>
+      <p>sehingga <span class="m">v<sub>a</sub> ≈ 77,4 m/s</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">≈ 706 Pa</span> &nbsp; (b) <span class="m">≈ 77,4 m/s</span></p></div>
+    </div></details>
+  </article>
+
+  <!-- L10 -->
+  <article class="prob" data-prob="l10">
+    <h2 id="l10">Soal 10 <span class="tag">Kontinuitas &amp; Bernoulli</span></h2>
+    <div class="q">
+      <figure>
+        <svg viewBox="0 0 460 165" width="400" role="img" aria-label="Pipa horizontal bagian 1 diameter 8 cm menyempit ke bagian 2 diameter 4 cm">
+          <path class="s-w" d="M20,30 H220 L260,62 H440 V108 H260 L220,140 H20 Z"/>
+          <path class="s-ln" d="M20,30 H220 L260,62 H440 M20,140 H220 L260,108 H440"/>
+          <line class="s-ar" x1="60" y1="85" x2="130" y2="85"/>
+          <line class="s-ar" x1="300" y1="85" x2="425" y2="85"/>
+          <text class="s-ta" x="100" y="68">1</text>
+          <text class="s-ta" x="350" y="78">2</text>
+          <text class="s-tm" x="30" y="160">d₁ = 8 cm, v₁ = 2 m/s, P₁ = 2,0 × 10⁵ Pa</text>
+          <text class="s-tm" x="300" y="128">d₂ = 4 cm</text>
+        </svg>
+      </figure>
+      <p>Air mengalir melalui pipa horizontal. Pada bagian 1 diameter pipa 8 cm, kelajuan air 2 m/s, dan tekanannya 2,0 × 10⁵ Pa. Pipa kemudian menyempit menjadi diameter 4 cm pada bagian 2. Tentukan:</p>
+      <ol><li>debit air;</li><li>kelajuan air di bagian 2;</li><li>tekanan air di bagian 2;</li><li>waktu yang diperlukan untuk mengisi tangki bervolume 1 m³.</li></ol></div>
+    <div class="check"><div class="ch">Cek jawaban</div>
+      <div class="row"><label>(a)</label><input inputmode="decimal" data-ans="1.005e-2" aria-label="10a"><span class="u">m³/s</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(b)</label><input inputmode="decimal" data-ans="8" aria-label="10b"><span class="u">m/s</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(c)</label><input inputmode="decimal" data-ans="170000" aria-label="10c"><span class="u">Pa</span><span class="fb" aria-live="polite"></span></div>
+      <div class="row"><label>(d)</label><input inputmode="decimal" data-ans="99.5" aria-label="10d"><span class="u">s</span><span class="fb" aria-live="polite"></span></div>
+      <div class="toolbar"><button class="btn primary" type="button" data-check>Periksa</button></div>
+    </div>
+    <details class="sol"><summary>Lihat kunci &amp; pembahasan</summary><div class="inner">
+      <p>(a) <span class="m">A₁ = ¼π(0,08)² = 5,03 × 10⁻³ m²</span>; <span class="m">Q = A₁v₁ = (5,03 × 10⁻³)(2) ≈ 1,01 × 10⁻² m³/s</span>.</p>
+      <p>(b) <span class="m">v₂ = v₁(d₁/d₂)² = 2(8/4)² = 8 m/s</span>.</p>
+      <p>(c) Pipa horizontal: <span class="m">P₂ = P₁ + ½ρ(v₁² − v₂²) = 2,0 × 10⁵ + ½(1000)(4 − 64) = 1,70 × 10⁵ Pa</span>. Di bagian sempit alirannya lebih cepat, sehingga tekanannya lebih kecil.</p>
+      <p>(d) <span class="m">t = V/Q = 1/(1,005 × 10⁻²) ≈ 99,5 s</span>.</p>
+      <div class="box ans"><div class="bt">✓ Jawaban</div><p>(a) <span class="m">≈ 1,01 × 10⁻² m³/s</span> &nbsp; (b) <span class="m">8 m/s</span> &nbsp; (c) <span class="m">1,70 × 10⁵ Pa</span> &nbsp; (d) <span class="m">≈ 99,5 s</span></p></div>
+    </div></details>
+  </article>
+
+  <div class="pill-nav"><a href="#contoh"><small>← Kembali</small>Contoh Soal</a><a class="nx" href="#rumus"><small>Lanjut →</small>Lembar Rumus</a></div>
+</section>
+
+<!-- ================================================================ RUMUS -->
+<section class="view" id="rumus" data-label="Lembar Rumus" hidden>
+  <span class="eyebrow">Ringkas · Siap cetak</span>
+  <h1>Lembar Rumus Ringkas</h1>
+  <div class="toolbar"><button class="btn" type="button" id="printBtn">Cetak / simpan PDF</button></div>
+  <h2 id="r-statis">Fluida statis</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Konsep</th><th>Rumus</th></tr></thead>
+    <tbody>
+      <tr><td>Massa jenis</td><td class="m">ρ = m/V</td></tr>
+      <tr><td>Tekanan</td><td><span class="m">P = F/A</span>; <span class="m">P<sub>mutlak</sub> = P₀ + P<sub>gauge</sub></span></td></tr>
+      <tr><td>Tekanan hidrostatik</td><td><span class="m">P = P₀ + ρgh</span>; <span class="m">∆P = ρg∆h</span></td></tr>
+      <tr><td>Hukum pokok hidrostatika</td><td><span class="m">P<sub>A</sub> = P<sub>B</sub></span> (sebidang, sejenis); tabung U: <span class="m">ρ₁h₁ = ρ₂h₂</span></td></tr>
+      <tr><td>Hukum Pascal / hidrolik</td><td><span class="m">F₁/A₁ = F₂/A₂</span>; <span class="m">F₁/F₂ = (d₁/d₂)²</span></td></tr>
+      <tr><td>Gaya tekanan atmosfer</td><td><span class="m">F = P₀A</span> (sisi lain vakum)</td></tr>
+      <tr><td>Hukum Hooke &amp; energi pegas</td><td><span class="m">F = k∆x</span>; <span class="m">W = ½k(∆x)²</span></td></tr>
+      <tr><td>Hukum Archimedes</td><td class="m">F<sub>A</sub> = ρ<sub>f</sub>gV<sub>celup</sub></td></tr>
+      <tr><td>Benda terapung</td><td><span class="m">m = ρ<sub>f</sub>V<sub>celup</sub></span>; <span class="m">V<sub>celup</sub>/V = ρ<sub>rata</sub>/ρ<sub>f</sub></span></td></tr>
+      <tr><td>Tegangan tali (berat semu)</td><td class="m">T = mg − F<sub>A</sub></td></tr>
+      <tr><td>Balon udara</td><td class="m">a = (ρ<sub>luar</sub>/ρ<sub>dalam</sub> − 1)g</td></tr>
+    </tbody>
+  </table></div>
+  <h2 id="r-dinamis">Fluida dinamis</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Konsep</th><th>Rumus</th></tr></thead>
+    <tbody>
+      <tr><td>Debit</td><td class="m">Q = V/t = Av</td></tr>
+      <tr><td>Kontinuitas</td><td><span class="m">A₁v₁ = A₂v₂</span>; <span class="m">v₂/v₁ = (d₁/d₂)²</span></td></tr>
+      <tr><td>Bernoulli</td><td class="m">P + ½ρv² + ρgh = konstan</td></tr>
+      <tr><td>Gaya angkat sayap</td><td><span class="m">∆P = ½ρ(v<sub>a</sub>² − v<sub>b</sub>²)</span>; <span class="m">F = ∆P·A</span></td></tr>
+      <tr><td>Torricelli (pengayaan)</td><td class="m">v = √(2gh)</td></tr>
+    </tbody>
+  </table></div>
+  <h2 id="r-geo">Geometri &amp; konversi</h2>
+  <div class="tbl"><table>
+    <tbody>
+      <tr><td>Geometri</td><td><span class="m">A<sub>lingkaran</sub> = πr² = ¼πd²</span>; <span class="m">V<sub>bola</sub> = ⁴⁄₃πR³</span>; <span class="m">V<sub>kulit</sub> = ⁴⁄₃π(R³ − r³)</span></td></tr>
+      <tr><td>Konversi</td><td><span class="m">1 atm = 1,013 × 10⁵ Pa = 760 mmHg</span>; <span class="m">1 mmHg ≈ 133,3 Pa</span>; <span class="m">1 cm² = 10⁻⁴ m²</span>; <span class="m">1 L = 10⁻³ m³</span></td></tr>
+    </tbody>
+  </table></div>
+  <h2 id="r-asumsi">Asumsi standar</h2>
+  <div class="box"><p><span class="m">g = 9,8 m/s²</span>; <span class="m">P₀ = 1,013×10⁵ Pa</span>; massa piston, pegas, tali, bahan balon, dan pipa penghubung diabaikan kecuali disebutkan; zat cair tak termampatkan; aliran ideal (tak kental, tunak) pada soal fluida dinamis.</p></div>
+  <h2 id="r-kesalahan">Kesalahan umum (cek sebelum mengumpulkan)</h2>
+  <ul>
+    <li>cm² → m² pakai <b>10⁻⁴</b>, bukan 10⁻².</li>
+    <li>Diameter ≠ jari-jari pada <span class="m">πr²</span>.</li>
+    <li><span class="m">ρ</span> pada gaya apung adalah ρ <b>fluida</b>; volume yang dipakai hanya bagian <b>tercelup</b>.</li>
+    <li>Dua titik setinggi hanya bertekanan sama bila dalam zat cair <b>sejenis</b>.</li>
+    <li>Usaha pegas <span class="m">½k∆x²</span>, bukan <span class="m">F∆x</span>.</li>
+    <li>Jangan mencampur tekanan mutlak dan terukur.</li>
+    <li><span class="m">v<sub>a</sub>² − v<sub>b</sub>² ≠ (v<sub>a</sub> − v<sub>b</sub>)²</span>.</li>
+    <li>Perhatikan indeks 1 dan 2 pada kontinuitas.</li>
+  </ul>
+  <div class="pill-nav"><a href="#latihan"><small>← Kembali</small>Latihan Soal</a><a class="nx" href="#beranda"><small>Ke awal →</small>Beranda</a></div>
+</section>
+
+    <footer class="footer">
+      <p>Disusun dari Rangkuman Materi Fluida, Jawaban Tugas Kelompok 5, dan Latihan Soal Fluida — FI-1101 Fisika Dasar I, Semester 1 2026–2027. Halaman ini berdiri sendiri: tanpa skrip, font, atau sumber eksternal.</p>
+    </footer>
+  </main>
+</div>
+
+<button class="iconbtn totop" id="toTop" type="button" aria-label="Kembali ke atas">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var store = {
+    get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var EASE = 'cubic-bezier(.22,1,.36,1)';
+  var clear = function (el) { while (el.firstChild) el.removeChild(el.firstChild); };
+  var mk = function (tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+
+  /* ---------- Theme ---------- */
+  var root = document.documentElement, metaTheme = $('meta[name="theme-color"]');
+  function applyTheme(t) {
+    t = t === 'light' ? 'light' : 'dark';
+    root.setAttribute('data-theme', t);
+    if (metaTheme) metaTheme.setAttribute('content', t === 'light' ? '#F5F7FB' : '#0B1220');
+  }
+  var prefersLight = false;
+  try { prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches; } catch (e) {}
+  applyTheme(store.get('fl-theme', prefersLight ? 'light' : 'dark'));
+  $('#themeBtn').addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    if (!reduce) { root.classList.add('theme-anim'); clearTimeout(applyTheme._t); applyTheme._t = setTimeout(function () { root.classList.remove('theme-anim'); }, 600); }
+    applyTheme(t); store.set('fl-theme', t);
+  });
+
+  /* ---------- Sidebar (mobile) ---------- */
+  var menuBtn = $('#menuBtn');
+  function closeSidebar() { document.body.classList.remove('nav-open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  menuBtn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  $('#scrim').addEventListener('click', closeSidebar);
+
+  /* ---------- Views, TOC, router ---------- */
+  var views = $$('.view'), viewLinks = $$('[data-view-link]'), toc = $('#toc'), tocTitle = $('#tocTitle');
+  var current = null, spy = null;
+  var learned = store.get('fl-learned', {}), done = store.get('fl-done', {});
+  if (typeof learned !== 'object' || !learned) learned = {};
+  if (typeof done !== 'object' || !done) done = {};
+
+  function buildToc(view) {
+    clear(toc);
+    tocTitle.textContent = view.getAttribute('data-label') || 'Daftar Isi';
+    var heads = $$('h2[id], h3[id]', view);
+    heads.forEach(function (h) {
+      var a = mk('a', h.tagName === 'H3' ? 'l3' : 'l2');
+      a.href = '#' + h.id;
+      a.textContent = h.childNodes.length ? textOfHeading(h) : h.textContent;
+      if (/^(c|l)\d+$/.test(h.id)) {
+        var ok = (h.id[0] === 'c' ? learned : done)[h.id];
+        if (ok) a.appendChild(mk('span', 'chk', '✓'));
+      }
+      toc.appendChild(a);
+    });
+    if (spy) spy.disconnect();
+    if ('IntersectionObserver' in window) {
+      spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            $$('a', toc).forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id); });
+          }
+        });
+      }, { rootMargin: '-70px 0px -70% 0px' });
+      heads.forEach(function (h) { spy.observe(h); });
+    }
+  }
+  function textOfHeading(h) {
+    var t = '';
+    h.childNodes.forEach(function (n) {
+      if (n.nodeType === 1 && n.classList.contains('tag')) return;
+      t += n.textContent + (n.nodeType === 1 && n.classList.contains('num') ? ' ' : '');
+    });
+    return t.replace(/\s+/g, ' ').trim();
+  }
+  function showView(v) {
+    views.forEach(function (x) { x.hidden = x !== v; });
+    viewLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-view-link') === v.id); });
+    current = v;
+    buildToc(v);
+    if (!reduce) { v.classList.remove('enter'); void v.offsetWidth; v.classList.add('enter'); }
+  }
+  function route() {
+    var id = '';
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (e) { id = ''; }
+    if (!/^[A-Za-z0-9_-]{1,40}$/.test(id)) id = 'beranda';
+    var el = document.getElementById(id);
+    if (!el) { el = document.getElementById('beranda'); }
+    var v = el.classList.contains('view') ? el : el.closest('.view');
+    if (!v) return;
+    var switched = v !== current;
+    if (switched) showView(v);
+    if (el === v) window.scrollTo({ top: 0, behavior: switched || reduce ? 'instant' : 'smooth' });
+    else {
+      if (switched) window.scrollTo({ top: 0, behavior: 'instant' });
+      requestAnimationFrame(function () {
+        el.scrollIntoView({ block: 'start', behavior: reduce ? 'instant' : 'smooth' });
+      });
+    }
+    closeSidebar();
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------- Toggle all details ---------- */
+  $$('[data-toggle-all]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = document.getElementById(b.getAttribute('data-toggle-all'));
+      var open = b.getAttribute('data-open') === '1';
+      $$('details.sol', v).forEach(function (d) { if (d.open !== open) animateDetails(d, open); });
+    });
+  });
+
+  /* ---------- Smooth details ---------- */
+  function animateDetails(d, open) {
+    var inner = d.querySelector('.inner');
+    if (d._anim) { d._anim.cancel(); d._anim = null; }
+    if (reduce || !inner.animate) { d.open = open; return; }
+    var cs, from, to;
+    if (open) {
+      d.open = true;
+      cs = getComputedStyle(inner);
+      to = { height: inner.offsetHeight + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 };
+      from = { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 };
+      d._anim = inner.animate([from, to], { duration: 480, easing: EASE });
+    } else {
+      cs = getComputedStyle(inner);
+      from = { height: inner.offsetHeight + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 };
+      to = { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 };
+      d._anim = inner.animate([from, to], { duration: 340, easing: 'cubic-bezier(.65,0,.35,1)' });
+      d._anim.onfinish = function () { d.open = false; d._anim = null; };
+    }
+  }
+  $$('details.sol').forEach(function (d) {
+    d.querySelector('summary').addEventListener('click', function (e) {
+      e.preventDefault();
+      animateDetails(d, !d.open || !!(d._anim && d._anim.onfinish));
+    });
+  });
+
+  /* ---------- Progress ---------- */
+  function updateProgress() {
+    var nd = Object.keys(done).filter(function (k) { return done[k]; }).length;
+    var nl = Object.keys(learned).filter(function (k) { return learned[k]; }).length;
+    $('#progTxt').textContent = nd + '/10';
+    $('#progBar').style.width = (nd * 10) + '%';
+    $('#progTxt2').textContent = nl + '/10';
+    $('#progBar2').style.width = (nl * 10) + '%';
+    $$('.learn').forEach(function (b) {
+      var on = !!learned[b.getAttribute('data-learn')];
+      b.classList.toggle('done', on);
+      b.textContent = on ? '✓ Sudah dipelajari' : 'Tandai sudah dipelajari';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (current) buildToc(current);
+  }
+  $$('.learn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.getAttribute('data-learn');
+      learned[k] = !learned[k]; store.set('fl-learned', learned); updateProgress();
+    });
+  });
+
+  /* ---------- Answer checker ---------- */
+  function parseNum(s) {
+    s = String(s).trim().toLowerCase().replace(/\s+/g, '').replace(/−/g, '-');
+    if (!s || s.length > 30) return NaN;
+    s = s.replace(/(?:[×x*]|·)10\^?\(?([-+]?\d+)\)?$/, 'e$1');
+    if (s.indexOf(',') > -1 && s.indexOf('.') > -1) s = s.replace(/\./g, '').replace(',', '.');
+    else s = s.replace(',', '.');
+    if (!/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/.test(s)) return NaN;
+    return parseFloat(s);
+  }
+  var saved = store.get('fl-answers', {});
+  if (typeof saved !== 'object' || !saved) saved = {};
+  function checkRow(inp) {
+    var fb = inp.parentNode.querySelector('.fb');
+    var raw = inp.value;
+    inp.classList.remove('good', 'badv'); fb.classList.remove('good', 'badv'); fb.textContent = '';
+    void fb.offsetWidth;
+    if (!raw.trim()) return null;
+    var v = parseNum(raw), ans = parseFloat(inp.getAttribute('data-ans'));
+    var tol = parseFloat(inp.getAttribute('data-tol') || '0.02');
+    if (isNaN(v)) { fb.textContent = 'Format angka tidak dikenali'; fb.classList.add('badv'); inp.classList.add('badv'); return false; }
+    var ok = Math.abs(v - ans) <= Math.abs(ans) * tol;
+    inp.classList.add(ok ? 'good' : 'badv'); fb.classList.add(ok ? 'good' : 'badv');
+    if (ok) fb.textContent = '✓ Benar';
+    else fb.textContent = '✗ Belum tepat' + (Math.abs(v / ans) > 5 || Math.abs(v / ans) < 0.2 ? ' — cek satuan/konversi' : '');
+    return ok;
+  }
+  $$('[data-check]').forEach(function (btn) {
+    var art = btn.closest('.prob'), id = art.getAttribute('data-prob');
+    var inputs = $$('input[data-ans]', art);
+    inputs.forEach(function (inp, i) {
+      var key = id + '-' + i;
+      if (typeof saved[key] === 'string') inp.value = saved[key].slice(0, 30);
+      inp.addEventListener('input', function () { saved[key] = inp.value.slice(0, 30); store.set('fl-answers', saved); });
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') btn.click(); });
+    });
+    btn.addEventListener('click', function () {
+      var all = true;
+      inputs.forEach(function (inp) { if (checkRow(inp) !== true) all = false; });
+      if (all) { done[id] = true; store.set('fl-done', done); updateProgress(); }
+    });
+    if (done[id]) inputs.forEach(checkRow);
+  });
+  $('#resetLat').addEventListener('click', function () {
+    saved = {}; done = {}; store.set('fl-answers', saved); store.set('fl-done', done);
+    $$('#latihan input[data-ans]').forEach(function (inp) { inp.value = ''; checkRow(inp); });
+    updateProgress();
+  });
+
+  /* ---------- Search ---------- */
+  var index = [];
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  views.forEach(function (v) {
+    $$('h2[id], h3[id]', v).forEach(function (h) {
+      var t = '', n = h.nextElementSibling;
+      while (n && !/^H[23]$/.test(n.tagName)) { t += ' ' + n.textContent; n = n.nextElementSibling; }
+      if (h.parentNode.classList.contains('prob')) t = h.parentNode.textContent;
+      t = t.replace(/\s+/g, ' ').trim();
+      index.push({ id: h.id, title: textOfHeading(h), view: v.getAttribute('data-label'), text: t, nt: norm(t), ntitle: norm(textOfHeading(h)) });
+    });
+  });
+  var q = $('#q'), res = $('#results'), sel = -1;
+  function showRes(b) { res.classList.toggle('show', b); }
+  function hl(parent, text, term) {
+    var nt = norm(text), i = term ? nt.indexOf(term) : -1;
+    if (i < 0) { parent.appendChild(document.createTextNode(text)); return; }
+    parent.appendChild(document.createTextNode(text.slice(0, i)));
+    parent.appendChild(mk('mark', null, text.slice(i, i + term.length)));
+    parent.appendChild(document.createTextNode(text.slice(i + term.length)));
+  }
+  function search() {
+    var term = norm(q.value.trim()).slice(0, 80);
+    clear(res); sel = -1;
+    if (term.length < 2) { showRes(false); return; }
+    var words = term.split(/\s+/).filter(Boolean);
+    var hits = index.map(function (e) {
+      var s = 0;
+      for (var i = 0; i < words.length; i++) {
+        var w = words[i], inT = e.ntitle.indexOf(w) > -1, inB = e.nt.indexOf(w) > -1;
+        if (!inT && !inB) return null;
+        s += inT ? 10 : 1;
+      }
+      return { e: e, s: s };
+    }).filter(Boolean).sort(function (a, b) { return b.s - a.s; }).slice(0, 12);
+    if (!hits.length) { res.appendChild(mk('div', 'empty', 'Tidak ada hasil untuk “' + q.value.trim().slice(0, 40) + '”.')); showRes(true); return; }
+    hits.forEach(function (h) {
+      var a = mk('a'); a.href = '#' + h.e.id; a.setAttribute('role', 'option');
+      var t = mk('div', 'rt'); t.appendChild(mk('span', 'rv', h.e.view)); hl(t, h.e.title, words[0]); a.appendChild(t);
+      var i = h.e.nt.indexOf(words[0]);
+      if (i > -1) {
+        var st = Math.max(0, i - 50), snip = (st > 0 ? '…' : '') + h.e.text.slice(st, i + 90) + '…';
+        var sn = mk('div', 'rs'); hl(sn, snip, words[0]); a.appendChild(sn);
+      }
+      a.addEventListener('click', function () { showRes(false); q.blur(); });
+      res.appendChild(a);
+    });
+    showRes(true);
+  }
+  q.addEventListener('input', search);
+  q.addEventListener('focus', function () { if (q.value.trim().length > 1) search(); });
+  q.addEventListener('keydown', function (e) {
+    var items = $$('a', res);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault(); if (!items.length) return;
+      sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+      items.forEach(function (a, i) { a.classList.toggle('sel', i === sel); });
+      items[sel].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      var t = items[sel >= 0 ? sel : 0]; if (t) { location.hash = t.getAttribute('href'); showRes(false); q.blur(); }
+    } else if (e.key === 'Escape') { showRes(false); q.blur(); }
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.search')) showRes(false); });
+  document.addEventListener('keydown', function (e) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (e.key === '/' && tag !== 'input' && tag !== 'textarea') { e.preventDefault(); q.focus(); q.select(); }
+    if (e.key === 'Escape') closeSidebar();
+  });
+
+  /* ---------- Misc ---------- */
+  var toTop = $('#toTop');
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY || 0;
+    document.body.classList.toggle('floating', y > 12);
+    toTop.classList.toggle('show', y > 600);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  /* ---------- Reveal on scroll ---------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var revealer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); revealer.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
+    $$('main .box, main .prob, main figure, main .tbl, main .card, main .steps li, main .consts').forEach(function (el) {
+      if (el.parentNode.closest('.prob, .box')) return;
+      el.classList.add('rv'); revealer.observe(el);
+    });
+    window.addEventListener('beforeprint', function () { $$('.rv').forEach(function (el) { el.classList.add('in'); }); });
+  }
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  $('#printBtn').addEventListener('click', function () { window.print(); });
+
+  route();
+  updateProgress();
+})();
+</script>
+</body>
+</html>
